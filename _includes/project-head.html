@@ -12,7 +12,7 @@
   {% if page.stack %}<div><dt>Built with</dt><dd>{{ page.stack | join: " · " }}</dd></div>{% endif %}
 </dl>
 {% if page.live or page.code or page.links %}<p class="pj-links">
-  {% if page.live %}<a class="rs-chip rs-chip--live" href="{{ page.live }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span>Live site</span></a>{% endif %}
+  {% if page.live %}<a class="rs-chip rs-chip--live" href="{{ page.live }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span>Site</span></a>{% endif %}
   {% if page.code %}<a class="rs-chip" href="{{ page.code }}"><i class="fab fa-github" aria-hidden="true"></i><span>Code</span></a>{% endif %}
   {% for l in page.links %}<a class="rs-chip" href="{{ l.url }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span>{{ l.label }}</span></a>{% endfor %}
 </p>{% endif %}

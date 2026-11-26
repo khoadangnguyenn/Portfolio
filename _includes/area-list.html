@@ -42,7 +42,7 @@
             <p class="work__summary">{{ c_sum }}</p>
             {% if c_res %}<p class="areas__result">{{ c_res }}</p>{% endif %}
             {% if c_live or it.repo or it.url %}<p class="areas__links">
-              {% if c_live %}<a class="areas__live" href="{{ c_live }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live site</a>{% endif %}
+              {% if c_live %}<a class="areas__live" href="{{ c_live }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Site</a>{% endif %}
               {% if it.url %}<a href="{{ base_path }}{{ it.url }}">{% if it.kind == 'paper' %}Paper page{% elsif it.kind == 'writing' %}Read{% else %}Project page{% endif %}</a>{% endif %}
               {% if it.repo %}<a href="{{ gh }}{{ it.repo }}">Code on GitHub ↗</a>{% endif %}
               {% if it.lang %}<span>{{ it.lang }}</span>{% endif %}</p>{% endif %}
