@@ -16,7 +16,6 @@
         {% endfor %}
       </div>
     </div>
-    <p class="areas__note">Dates come from my CV where it has them; otherwise from the first and last month of activity on <a href="https://github.com/{{ site.author.github }}">GitHub</a> (marked "GitHub").</p>
     {% for a in P.areas %}
     {% assign list = P.items | where: "area", a.id | sort: "end" | reverse %}
     {% if list.size > 0 %}
@@ -30,7 +29,7 @@
         {% elsif sy == ey %}{% assign sm = s | date: "%b" %}{% capture when %}{{ sm }} – {{ e | date: "%b %Y" }}{% endcapture %}
         {% else %}{% capture when %}{{ s | date: "%b %Y" }} – {{ e | date: "%b %Y" }}{% endcapture %}{% endif %}
         <li class="work__row" data-kind="{{ a.id }}">
-          <span class="work__when">{{ when }}{% if it.date_src == "github" %}<small class="areas__src">GitHub</small>{% endif %}</span>
+          <span class="work__when">{{ when }}</span>
           <span class="work__type work__type--{% if it.kind == 'repo' %}project{% else %}{{ it.kind }}{% endif %}">{% case it.kind %}{% when 'paper' %}Paper{% when 'writing' %}Writing{% when 'repo' %}Repo{% else %}Project{% endcase %}</span>
           <div class="work__body">
             {% if it.thumb %}<a class="areas__thumb" href="{{ base_path }}{{ it.url }}" tabindex="-1" aria-hidden="true"><img src="{{ base_path }}{{ it.thumb }}" alt="" width="960" height="480" loading="lazy" decoding="async"></a>{% endif %}

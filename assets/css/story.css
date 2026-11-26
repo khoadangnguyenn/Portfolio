@@ -358,3 +358,9 @@ a.rs-proof:hover { color: var(--st-link); text-decoration-color: var(--st-link);
 .rs-lightbox button { background: none; border: 0; color: #f3f4f6; font: inherit; cursor: pointer; text-decoration: underline; }
 .rs-lightbox::backdrop { background: rgba(10, 12, 16, .92); }
 .rs-lightbox p { padding: 8px 2px 0; }
+
+/* Paper abstract (2026-11-26): full on the paper page, collapsed in lists (as on yang-song.net) */
+.pub-abstract__h { font-size: 13px !important; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--st-kicker); margin: 8px 0 6px !important; border: 0 !important; }
+.pub-abstract { font-size: 16.5px; line-height: 1.65; }
+.pub-abstract-list summary { cursor: pointer; font-size: 14px; color: var(--st-muted); }
+.pub-abstract-list p { font-size: 15px; line-height: 1.6; margin: 6px 0 0; }
