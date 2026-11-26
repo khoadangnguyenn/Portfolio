@@ -11,7 +11,8 @@ redirect_from:
 tagline: "AI Engineer · Robotics & Computer Vision"   # user wording 2026-11-26 (LinkedIn headline: "Robotics & Computer Vision")
 ---
 
-<!-- About copied word for word from LinkedIn (saved page of 2026-10-24), at the user's request on 2026-11-26. -->
-AI Research Engineer in Robotics and Computer Vision at Hypmotion Co., Ltd.<br>
-Final-year Computer Science student at HCMUT (VNU-HCM).<br>
-Able to work in English and Japanese in international environments.
+Hi, I'm Khoa. I work on how robots see: turning camera and LiDAR data into maps that a robot can plan its path on.
+
+I'm an AI engineer in R&D at Hypmotion and a final-year Computer Science student at HCMUT (VNU-HCM). Since 2024 I've done research in the URA group with Assoc. Prof. Quan Thanh Tho. There I worked on bird's-eye-view mapping with VinFast, and on MARS, a small trajectory-prediction model that runs in 3.4 ms. I started out in math competitions, and I still enjoy problems that a clear argument can settle.
+
+Outside work I read a lot, and I keep learning about the universe and about how computers work underneath. I work in English and Japanese, and I'm always glad to talk about robots, research or a good book.
