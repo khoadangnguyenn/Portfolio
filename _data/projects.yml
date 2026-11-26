@@ -131,6 +131,7 @@ items:
     summary: "A game server rental platform with modpack support and easy server management."
     repo: "Cloud-Arena"
     url: /portfolio/cloud-arena/
+    thumb: /images/work/cloud-arena/home.jpg
     lang: PHP
   - title: "HCMUT Tutoring"
     area: web

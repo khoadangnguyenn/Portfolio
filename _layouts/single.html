@@ -52,6 +52,7 @@ layout: default
         {% if page.collection == "portfolio" %}{% include base_path %}{% include project-head.html %}{% endif %}
         {% if page.abstract %}<h2 class="pub-abstract__h">Abstract</h2><p class="pub-abstract">{{ page.abstract }}</p>{% endif %}
         {{ content }}
+        {% if page.gallery %}<div class="pj-gallery">{% for g in page.gallery %}<figure><a href="{{ base_path }}{{ g.src }}"><img src="{{ base_path }}{{ g.src }}" alt="{{ g.caption | escape }}" loading="lazy" decoding="async"></a><figcaption>{{ g.caption }}</figcaption></figure>{% endfor %}</div>{% endif %}
 
         {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
           <p style="font-size: smaller"><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>

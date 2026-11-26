@@ -9,11 +9,23 @@ role: "Team of four; owner of the news module"
 context: "Web programming course project"
 stack: [PHP, MySQL, Tailwind CSS, JavaScript]
 code: "https://github.com/khoadangnguyenn/Cloud-Arena"
+links:
+  - label: "Live site"
+    url: "https://cloud-arena.vercel.app/"
+teaser: /images/work/cloud-arena/home.jpg
+teaser_alt: "Cloud Arena home page: a dark hero with server plans and a live server console"
+gallery:
+  - src: /images/work/cloud-arena/products.jpg
+    caption: "Server plans, with search, category and price filters."
+  - src: /images/work/cloud-arena/news.jpg
+    caption: "The news section I built: categories, search and a featured story."
+  - src: /images/work/cloud-arena/article.jpg
+    caption: "An article page with view count, likes, sharing and trending posts."
 card_summary: "A game-server rental platform in PHP and MySQL: product shop, cart, news with comments, and an admin dashboard."
 permalink: /portfolio/cloud-arena/
 ---
 
-Cloud Arena is a website for renting game servers. It runs on plain PHP 8.2 with a custom MVC framework, a dark Tailwind front end and a separate admin dashboard. Four of us built it for a web programming course.
+Cloud Arena is a website for renting game servers. It runs on plain PHP 8.2 with a custom MVC framework, a dark Tailwind front end and a separate admin dashboard. Four of us built it for a web programming course, and it is live on Vercel under the brand G-SERVER.
 
 The course asked for a complete web application. A rental site needs a catalogue, a cart and orders, content pages and an admin side, so we split the work four ways.
 

@@ -398,3 +398,13 @@ body:has(.rs-wrap) { --mh-col: 932px; --mh-pad: 24px; }
 .pj-links a.rs-chip i { font-size: 14px; color: var(--st-muted); }
 .pj-links a.rs-chip:hover, .pj-links a.rs-chip:focus-visible { border-color: var(--st-link); color: var(--st-link) !important; }
 .pj-links a.rs-chip:hover i { color: var(--st-link); }
+
+/* Screenshot grid on project pages (front matter: gallery[{src,caption}]), 2026-11-26 */
+.pj-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 24px 0 8px; }
+.pj-gallery { align-items: start; }
+.pj-gallery figure { margin: 0; display: block; }
+.pj-gallery figure a { display: block; }
+.pj-gallery figcaption { margin: 6px 0 0; padding: 0; width: auto; }
+.pj-gallery img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--st-line); display: block; }
+.pj-gallery figcaption { font-size: 14px; color: var(--st-muted); margin-top: 6px; }
+@media (max-width: 640px) { .pj-gallery { grid-template-columns: 1fr; } }
