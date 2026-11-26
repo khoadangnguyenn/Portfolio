@@ -192,6 +192,11 @@ exclude:
   - package.json*
   - Rakefile
   - README
+  - README.md
+  - tools
+  - docker-compose.yaml
+  - _config_docker.yml
+  - .devcontainer
   - tmp
   - vendor
 keep_files:
