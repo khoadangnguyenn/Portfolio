@@ -112,6 +112,16 @@ items:
     url: /portfolio/educast-ai/
     lang: Python
   # ---------- Web and apps
+  - title: "Freelance Studio"
+    area: web
+    kind: project
+    start: "2026-11"   # date not confirmed by the user; site live on 2026-11-26
+    end: "2026-11"
+    date_src: site
+    role: "Team lead, team of three"
+    summary: "The website of our three-person freelance studio, with services, pricing, past work and a client area."
+    url: /portfolio/freelance-studio/
+    thumb: /images/work/auratyc/home.jpg
   - title: "Cloud Arena"
     area: web
     kind: repo
