@@ -72,4 +72,7 @@ Directories named `_trash_<date>/` hold files that were taken off the site but m
 
 ## Credit
 
+The favicon is the "Milky Way" emoji from [Google Noto Emoji](https://github.com/googlefonts/noto-emoji) (Apache License 2.0).
+
+
 Built on [Academic Pages](https://github.com/academicpages/academicpages.github.io), a fork of Minimal Mistakes, under the MIT licence (see `LICENSE`).
