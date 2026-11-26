@@ -364,3 +364,17 @@ a.rs-proof:hover { color: var(--st-link); text-decoration-color: var(--st-link);
 .pub-abstract { font-size: 16.5px; line-height: 1.65; }
 .pub-abstract-list summary { cursor: pointer; font-size: 14px; color: var(--st-muted); }
 .pub-abstract-list p { font-size: 15px; line-height: 1.6; margin: 6px 0 0; }
+
+/* Top bar aligned to the content column (2026-11-26, user: bar was off from the avatar).
+   Template bar used a 1280px frame; content uses 780px (archive pages) or 932px (.rs-wrap pages). */
+:root { --mh-col: 780px; --mh-pad: 18px; }
+body:has(.rs-wrap) { --mh-col: 932px; --mh-pad: 24px; }
+.masthead__inner-wrap { max-width: calc(var(--mh-col) + 2 * var(--mh-pad, 24px)) !important; padding-left: var(--mh-pad, 24px) !important; padding-right: var(--mh-pad, 24px) !important; box-sizing: border-box; }
+.masthead__inner-wrap #site-nav { margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+@media (max-width: 720px) { :root, body:has(.rs-wrap) { --mh-pad: 16px; } }
+/* Name on the left, links pushed to the right edge of the column */
+@media (min-width: 641px) {
+  .masthead__inner-wrap .greedy-nav .visible-links { display: flex !important; width: 100%; align-items: center; }
+  .masthead__inner-wrap .greedy-nav .visible-links .masthead__menu-item--lg { margin-right: auto; }
+  .masthead__inner-wrap .greedy-nav .visible-links #theme-toggle { margin-right: 0; padding-right: 0; }
+}

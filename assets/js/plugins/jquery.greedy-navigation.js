@@ -13,16 +13,24 @@ var $hlinks = $('#site-nav .hidden-links');
 
 var breaks = [];
 
+// 2026-11-26: measure the items, not the list box. The list is stretched to the column width by CSS
+// (name left, links right), so its own width no longer tells whether the items overflow.
+function linksWidth() {
+  var w = 0;
+  $vlinks.children().each(function () { w += $(this).outerWidth(); });
+  return w;
+}
+
 function updateNav() {
 
   var availableSpace = $btn.hasClass('hidden') ? $nav.width() : $nav.width() - $btn.width() - 30;
 
   // The visible list is overflowing the nav
-  if ($vlinks.width() > availableSpace) {
+  if (linksWidth() > availableSpace) {
 
-    while ($vlinks.width() > availableSpace && $vlinks.children("*:not(.persist)").length > 0) {
+    while (linksWidth() > availableSpace && $vlinks.children("*:not(.persist)").length > 0) {
       // Record the width of the list
-      breaks.push($vlinks.width());
+      breaks.push(linksWidth());
 
       // Move item to the hidden list
       $vlinks.children("*:not(.persist)").last().prependTo($hlinks);
