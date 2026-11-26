@@ -8,9 +8,7 @@ end: "2026-11"
 role: "Team lead, team of three"
 context: "Freelance studio with two HCMUT classmates"
 stack: [Next.js, nginx]
-links:
-  - label: "Visit site"
-    url: "https://auratyc.info.vn"
+live: "https://auratyc.info.vn"
 card_summary: "The website of our three-person freelance studio: services, pricing, past work, articles and a client area to follow each project."
 teaser: /images/work/auratyc/home.jpg
 permalink: /portfolio/freelance-studio/

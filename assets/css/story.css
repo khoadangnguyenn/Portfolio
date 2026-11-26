@@ -408,3 +408,11 @@ body:has(.rs-wrap) { --mh-col: 932px; --mh-pad: 24px; }
 .pj-gallery img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--st-line); display: block; }
 .pj-gallery figcaption { font-size: 14px; color: var(--st-muted); margin-top: 6px; }
 @media (max-width: 640px) { .pj-gallery { grid-template-columns: 1fr; } }
+
+/* Button to a deployed site (front matter: live), on project cards and project pages, 2026-11-26.
+   Filled with the text colour so it inverts in dark mode. */
+.areas__links a.areas__live, .pj-links a.rs-chip--live { background: var(--st-ink); border: 1px solid var(--st-ink); color: var(--st-bg); text-decoration: none; }
+.areas__links a.areas__live { display: inline-flex; align-items: center; gap: 6px; padding: 2px 12px; border-radius: 999px; font-weight: 600; }
+.areas__links a.areas__live:hover, .pj-links a.rs-chip--live:hover { opacity: .85; color: var(--st-bg); }
+.pj-links a.rs-chip--live span { color: var(--st-bg); }
+.pj-links a.rs-chip--live i, .areas__links a.areas__live i { color: var(--st-bg); font-size: .85em; }

@@ -9,9 +9,7 @@ role: "Team of four; owner of the news module"
 context: "Web programming course project"
 stack: [PHP, MySQL, Tailwind CSS, JavaScript]
 code: "https://github.com/khoadangnguyenn/Cloud-Arena"
-links:
-  - label: "Live site"
-    url: "https://cloud-arena.vercel.app/"
+live: "https://cloud-arena.vercel.app/"
 teaser: /images/work/cloud-arena/home.jpg
 teaser_alt: "Cloud Arena home page: a dark hero with server plans and a live server console"
 gallery:

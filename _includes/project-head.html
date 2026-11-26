@@ -2,7 +2,7 @@
   Top of a project page (collection: portfolio), 2026-11-26. Order follows engineer project pages
   (radkinz.com mobile-robot, jhhuan.github.io ROBOCON, Learn UI "outcome first"):
   one-line tagline, facts (when, role, context, stack), link buttons, results with numbers, teaser figure.
-  Front matter: tagline, when, role, context, stack[], code, links[{label,url}], results[], teaser, teaser_alt, teaser_caption.
+  Front matter: tagline, when, role, context, stack[], live (deployed site URL), code, links[{label,url}], results[], teaser, teaser_alt, teaser_caption.
 {% endcomment %}
 {% if page.tagline %}<p class="pj-tagline">{{ page.tagline }}</p>{% endif %}
 <dl class="pj-facts">
@@ -11,7 +11,8 @@
   {% if page.context %}<div><dt>Context</dt><dd>{{ page.context }}</dd></div>{% endif %}
   {% if page.stack %}<div><dt>Built with</dt><dd>{{ page.stack | join: " · " }}</dd></div>{% endif %}
 </dl>
-{% if page.code or page.links %}<p class="pj-links">
+{% if page.live or page.code or page.links %}<p class="pj-links">
+  {% if page.live %}<a class="rs-chip rs-chip--live" href="{{ page.live }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span>Live site</span></a>{% endif %}
   {% if page.code %}<a class="rs-chip" href="{{ page.code }}"><i class="fab fa-github" aria-hidden="true"></i><span>Code</span></a>{% endif %}
   {% for l in page.links %}<a class="rs-chip" href="{{ l.url }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span>{{ l.label }}</span></a>{% endfor %}
 </p>{% endif %}

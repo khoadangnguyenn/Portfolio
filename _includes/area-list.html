@@ -31,7 +31,7 @@
         {% comment %} 2026-11-26: a project page (collection portfolio) overrides the card text and image, so they are written once. {% endcomment %}
         {% assign pg = nil %}{% if it.url %}{% assign pg = site.portfolio | where: "url", it.url | first %}{% endif %}
         {% assign c_sum = pg.card_summary | default: it.summary %}{% assign c_res = pg.card_result | default: it.result %}
-        {% assign c_thumb = pg.teaser | default: it.thumb %}{% assign c_role = pg.role | default: it.role %}
+        {% assign c_live = pg.live %}{% assign c_thumb = pg.teaser | default: it.thumb %}{% assign c_role = pg.role | default: it.role %}
         <li class="work__row" data-kind="{{ a.id }}">
           <span class="work__when">{{ when }}</span>
           <span class="work__type work__type--{% if it.kind == 'repo' %}project{% else %}{{ it.kind }}{% endif %}">{% case it.kind %}{% when 'paper' %}Paper{% when 'writing' %}Writing{% when 'repo' %}Repo{% else %}Project{% endcase %}</span>
@@ -41,7 +41,8 @@
             {% if c_role %}<p class="work__venue">{{ c_role }}</p>{% endif %}
             <p class="work__summary">{{ c_sum }}</p>
             {% if c_res %}<p class="areas__result">{{ c_res }}</p>{% endif %}
-            {% if it.repo or it.url %}<p class="areas__links">
+            {% if c_live or it.repo or it.url %}<p class="areas__links">
+              {% if c_live %}<a class="areas__live" href="{{ c_live }}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live site</a>{% endif %}
               {% if it.url %}<a href="{{ base_path }}{{ it.url }}">{% if it.kind == 'paper' %}Paper page{% elsif it.kind == 'writing' %}Read{% else %}Project page{% endif %}</a>{% endif %}
               {% if it.repo %}<a href="{{ gh }}{{ it.repo }}">Code on GitHub ↗</a>{% endif %}
               {% if it.lang %}<span>{{ it.lang }}</span>{% endif %}</p>{% endif %}
