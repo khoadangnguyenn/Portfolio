@@ -23,7 +23,8 @@ package-lock.json
 .DS_Store
 
 # local only
-vendor/
+# (2026-11-26) was "vendor/": that also ignored _sass/vendor, which the theme needs, and broke the GitHub build.
+/vendor/
 .bundle/
 _site/
 _trash_*/
