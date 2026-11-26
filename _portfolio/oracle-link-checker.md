@@ -11,19 +11,12 @@ card_summary: "A browser extension popup that checks a pasted URL against Google
 permalink: /portfolio/oracle-link-checker/
 ---
 
-Oracle, titled "V-link" in the README, is a browser extension popup: paste a URL, press Check, and it says whether the site is safe. The check is a real call to the Google Safe Browsing API, so the extension works, but the repo is an early prototype and parts of it are unfinished.
+Oracle, titled "V-link" in its README, is a Chrome extension popup. You paste a URL, press Check, and it tells you whether the site is safe. The check is a real call to the Google Safe Browsing API, so the extension works today, though the repo is an early prototype and parts of it are unfinished.
 
-## Problem
+People follow links without knowing whether a site hosts malware or phishing. The README sets three aims: suggest links, verify them, and show information about the website. Only verification is built.
 
-People follow links without knowing whether a site hosts malware or phishing. The README sets three aims: suggest links, verify them, and show information about the website. The code implements the verification part only.
+The extension is a Manifest V2 package named "Oracle Safety Checker", and its only extra permission is access to the Safe Browsing service. When you press Check, the popup sends the URL and asks for malware, social engineering and unwanted software matches on any platform.
 
-## What was built
+A second check compares the domain with a hard-coded list of five known bad sites. A domain Google does not flag can therefore still be marked unsafe.
 
-- `manifest.json` declares a Manifest V2 extension named "Oracle Safety Checker" with a popup (`oracle.html`) and permission for `safebrowsing.googleapis.com`.
-- `oracle.js` reads the URL from the popup and posts it to the Safe Browsing `threatMatches:find` endpoint, asking for `MALWARE`, `SOCIAL_ENGINEERING` and `UNWANTED_SOFTWARE` matches on any platform.
-- A second check compares the domain with a hard-coded list of five known bad sites, so a domain Google does not flag can still be marked unsafe.
-- The popup shows "Website is safe!" or "Website is unsafe!", and for unsafe results adds a Report button that opens Google's phishing-report form.
-
-## Limits and next steps
-
-Link suggestions and website information, both listed in the README, are not built yet.
+The popup shows "Website is safe!" or "Website is unsafe!". An unsafe result also gets a Report button that opens Google's phishing-report form. Link suggestions and website information are not built yet.

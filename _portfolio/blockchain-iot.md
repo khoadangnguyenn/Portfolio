@@ -12,14 +12,12 @@ card_summary: "IoT prototype: devices sign readings with ECDSA, a FastAPI backen
 permalink: /portfolio/blockchain-iot/
 ---
 
-IoT data can be forged by an impersonated device or altered on the way, and a central server is a single point of trust. `docs/problem_scope.md` frames the project around those two risks and targets a testnet prototype, not a mainnet deployment.
+This prototype guards IoT data against two risks: a forged reading from an impersonated device, and a reading altered on its way to storage. A central server would also be a single point of trust. The project docs frame the work around those risks and target a testnet, not mainnet.
 
-## What is in the repo
+A simulated device generates mock temperature and humidity readings and hashes them with SHA-256. It signs the hash with ECDSA on the secp256k1 curve, registers its public key and posts the payload to the backend.
 
-- `iot_device/device_simulator.py` generates mock temperature and humidity readings, hashes them with SHA-256, signs the hash with ECDSA on secp256k1, registers the public key and posts the payload to the backend.
-- `app/` is a FastAPI service. `POST /api/iot/upload` checks that the device is registered, verifies the signature (`services/signature.py`), adds the JSON to IPFS (`services/ipfs.py`) and writes the CID and data hash to the chain through web3.py (`services/blockchain.py`).
-- `contracts/DataStorage.sol` (296 lines) keeps a device registry with DIDs, stores data hashes, answers `verifyDataIntegrity(ipfsHash, dataHash)` and handles access grants with expiry, built on OpenZeppelin `Ownable` and `ReentrancyGuard`. `contracts/deploy.py` targets Polygon Amoy or a local node.
+The backend is a FastAPI service with one upload endpoint. It checks that the device is registered and verifies the signature. Then it adds the JSON to IPFS and writes the resulting content ID and the data hash to the chain through the web3 library.
 
-## Limits and next steps
+The Solidity contract is about 296 lines. It keeps a device registry with DIDs, stores data hashes and answers integrity checks for a given IPFS hash and data hash. It also handles access grants that expire. It builds on OpenZeppelin's ownership and reentrancy-guard contracts, and its deploy script targets Polygon Amoy or a local node.
 
-The prototype was tested on a testnet with simulated devices; scalability was not evaluated. The planned next steps are real IoT hardware, mainnet deployment and lower transaction cost.
+I tested the prototype on a testnet with simulated devices and did not evaluate scalability. Next steps are real IoT hardware, mainnet deployment and lower transaction cost.

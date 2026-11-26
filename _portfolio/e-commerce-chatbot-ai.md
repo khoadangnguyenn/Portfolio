@@ -8,20 +8,14 @@ card_summary: "A FastAPI chatbot service for e-commerce: OpenAI assistant replie
 permalink: /portfolio/e-commerce-chatbot-ai/
 ---
 
-## Problem
+A shop chatbot has to answer on Facebook Messenger, remember each conversation, and show how many tokens each user costs. This repo is the backend that does all three.
 
-A shop chatbot has to answer on Facebook Messenger, remember each conversation, and show how many tokens each user costs. This repo builds that backend.
+A user message of 1 to 4,000 characters hits a single chat endpoint. The service creates or loads the session, saves both sides of the exchange and records token usage. For the reply, it sends the last five messages to an OpenAI Assistant thread and waits for the run to finish. If the run fails, the user gets a fallback message.
 
-## What it does
+The Messenger webhook answers Facebook's verification handshake and checks the HMAC-SHA256 signature when an app secret is configured. Text messages go to the chatbot, and the reply goes back through the Graph API.
 
-`POST /api/chatbot/chatbot/interact` (`app/routes/chatbot.py`) accepts a message of 1 to 4,000 characters, creates or loads the session, saves both sides of the exchange and records token usage. The reply comes from `app/api/chatbot_tool.py`, which sends the last five messages to an OpenAI Assistant thread and polls the run; if the run fails, the user gets a fallback message.
-
-The Messenger webhook (`app/api/messenger_webhook.py`) answers Facebook's verification handshake and checks the HMAC-SHA256 signature when `FB_APP_SECRET` is set. It passes text messages to the chatbot and replies through the Graph API. Chat history and token counts per user and session live in MongoDB (`app/api/chat_history.py`, `app/api/token_tracker.py`, via `motor` and `pymongo`), and `docker-compose.yaml` starts MongoDB with Mongo Express.
-
-## Results
+Chat history and token counts, per user and per session, live in MongoDB. A Docker Compose file starts MongoDB together with Mongo Express.
 
 18 pytest tests cover the chat flow, MongoDB access and token tracking.
-
-## Limits and next steps
 
 Connectors to Shopee, TikTok Shop and Amazon, and monitoring with Prometheus, are planned but not built yet.

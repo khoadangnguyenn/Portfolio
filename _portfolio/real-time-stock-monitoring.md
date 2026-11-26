@@ -11,23 +11,17 @@ card_summary: "A Java service that pulls stock prices from HOSE and HNX adapters
 permalink: /portfolio/real-time-stock-monitoring/
 ---
 
-This is a small Java 8 and Maven service built around design patterns: it polls two exchange feeds (HOSE and HNX), converts their different formats to one type, and pushes every price to the viewers registered for that stock. The feeds are simulated, so it demonstrates the architecture and not live market data.
+This small Java 8 and Maven service is built around design patterns. It polls two exchange feeds, HOSE and HNX, converts their different formats into one price type, and pushes every price to the viewers registered for that stock. The feeds are simulated, so it shows the architecture, not live market data.
 
-## Problem
+The two Vietnamese exchanges return prices in their own shapes, yet an alert, a live price line and a periodic summary all want the same stream. The code keeps sources and consumers independent, so adding one touches little else.
 
-The two Vietnamese exchanges return prices in their own shapes, and several consumers (an alert, a live price line, a periodic summary) want the same stream. The code has to keep the sources and the consumers independent so that adding either one touches little else.
+Two patterns carry the design.
 
-## What was built
+- Adapter: one adapter per exchange turns that exchange's data into the common price type behind a shared fetcher interface.
+- Observer: a singleton feeder holds the stocks and the viewers of each stock code. It rejects a second viewer of the same kind per code and notifies the rest on each new price.
 
-- Adapter pattern: `HoseAdapter` and `HnxAdapter` implement `PriceFetcher` and convert `HoseData` and `HnxData` from `HosePriceFetchLib` and `HnxPriceFetchLib` into one `StockPrice`.
-- Observer pattern: `StockFeeder`, a singleton, holds the stocks and a list of `StockViewer`s per stock code, rejects a second viewer of the same class for a code, and calls `notify` for each new price.
-- Three viewers: `StockAlertView` fires when the price crosses a high or low threshold (only on the crossing, not on every tick), `StockRealtimePriceView` logs a price when it changes, and `StockTickerView` prints open, high, low, close, volume and average every 10 seconds.
-- `PriceFetchManager` runs all fetchers on a scheduled executor once a minute.
+There are three viewers. The alert fires when the price crosses a high or low threshold, and only on the crossing, not on every tick. The real-time view logs a price when it changes. The ticker prints open, high, low, close, volume and average every 10 seconds. A fetch manager runs all fetchers once a minute.
 
-## Results
+The demo watches Vingroup (VIC) with a high and a low alert threshold. It fetches four HOSE and three HNX codes on a schedule.
 
-`Main` watches Vingroup (VIC) with a high and a low alert threshold, and fetches four HOSE and three HNX codes on a schedule.
-
-## Limits and next steps
-
-The two exchange feeds are simulated from sample prices in `src/resources/stocks.json`. Real-time use needs real exchange clients behind the same `PriceFetcher` interface.
+Sample prices in a JSON file drive the feeds. Real-time use needs real exchange clients behind the same fetcher interface.

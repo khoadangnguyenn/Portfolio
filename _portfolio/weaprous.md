@@ -13,12 +13,15 @@ card_summary: "Network programming assignment: a threaded HTTP backend, a round-
 permalink: /portfolio/weaprous/
 ---
 
-This is a networking course assignment on the client–server and peer-to-peer paradigms, and the repo shows both built from sockets rather than a web framework. Course: CO3093/CO3094 at HCMUT.
+WeApRous is a networking course assignment (CO3093/CO3094 at HCMUT) on the client-server and peer-to-peer models. The core is built directly on TCP sockets, and the repo contains both models.
 
-## What is in the repo
+The client-server half is a threaded HTTP backend. It accepts a connection, starts one thread for that client, parses the request, calls the matching route handler and builds the reply. Routes are registered with a decorator that takes a method and a path, much like a small web framework.
 
-- `daemon/backend.py` accepts TCP connections and starts one thread per client. `daemon/httpadapter.py` then parses the request (`request.py`), calls the route hook and builds the reply (`response.py`).
-- `daemon/weaprous.py` is a decorator router: `@app.route('/user', methods=['GET'])` registers a handler for a method and path.
-- `daemon/proxy.py` and `config/proxy.conf` route by the `Host` header. The `app2.local` block lists two backends with `dist_policy round-robin`, and a per-host counter picks the next one. An unknown host or an unreachable backend gets a 404.
-- `p2p_chat.py` is a one-to-one TCP chat (`--listen PORT` on one side, `--peer HOST:PORT` on the other). `apps/chat_peer.py` instead registers with a tracker, asks it for the peer list as JSON, and messages each peer directly.
-- `server_login.py` and `www/` hold a Flask login and registration demo that issues a signed token valid for one hour, plus a chat page.
+In front of it sits a reverse proxy that picks a backend from the Host header. One virtual host in the config lists two backends and uses round-robin, with a counter per host to choose the next one. An unknown host or an unreachable backend gets a 404.
+
+The peer-to-peer half has two chats:
+
+- A one-to-one TCP chat where one side listens on a port and the other connects to it.
+- A tracker-based chat where each peer registers with a tracker, asks it for the peer list as JSON, and then messages every peer directly.
+
+A Flask demo adds login and registration. It issues a signed token valid for one hour and serves a chat page.

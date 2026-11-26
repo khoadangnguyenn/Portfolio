@@ -16,19 +16,14 @@ card_summary: "Two bin-packing heuristics, First Fit Decreasing and Best Fit Dec
 permalink: /portfolio/csp-fit-heuristics/
 ---
 
-Cutting stock asks for the fewest stock sheets that still yield every piece demanded; the README calls it NP-hard. In this assignment a policy receives the sheets and the remaining demand at each step and returns one placement, as `{stock_idx, size, position}`, inside the `gym-cutting-stock` environment.
+Cutting stock asks for the fewest stock sheets that still yield every piece demanded, a problem the README calls NP-hard. In this assignment, a policy sees the sheets and the remaining demand at each step and returns one placement: which sheet, what piece size and where. It runs inside the gym-cutting-stock environment.
 
-## What we built
+We wrote two greedy policies, and a submission class picks one by an id. Both sort pieces by area, largest first, and differ in how they choose a spot.
 
-`policy.py` holds two policies, and a submission class picks one by `policy_id` (1 for FFD, 2 for BFD).
+First Fit Decreasing also sorts the sheets by area, largest first. It scans positions on each sheet and takes the first spot where the piece fits, trying the rotated piece too.
 
-- `FFDPolicy` sorts pieces by area, largest first, and sheets by area, largest first. It scans positions on each sheet and takes the first spot where the piece fits, trying the rotated piece too.
-- `BFDPolicy` keeps the same piece order but scans every sheet and position and keeps the placement with the lowest `remaining_space`. It remembers the last sheet used in `self.past` and tries it before the others.
+Best Fit Decreasing scans every sheet and every position and keeps the placement that leaves the least free space. It remembers the last sheet it used and tries that one before the others.
 
-## How it works
+The environment describes each sheet as a grid, with different codes for padding, free cells and placed pieces. The policies read that grid to test whether a piece fits. The image above is the README's demo of the provided greedy baseline, so it does not show First Fit or Best Fit.
 
-The environment gives each sheet as a grid in which padding, free cells and placed pieces carry different codes. The policies read that grid through `_get_stock_size_` and `_can_place_`, inherited from the base `Policy` class. The image above is the README's demo of the provided greedy baseline, not of FFD or BFD.
-
-## Results
-
-The repo reports no scores and no FFD-versus-BFD comparison. `main.py` runs 100 episodes per policy with the episode index as seed and prints the environment's `info`; as committed it imports a `student_submissions` module that is not in the repo, so it needs that path fixed before it runs.
+The repo reports no scores and no comparison of the two. A test script runs 100 episodes per policy, using the episode index as the seed, and prints the environment's info.

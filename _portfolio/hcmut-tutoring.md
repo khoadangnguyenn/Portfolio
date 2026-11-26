@@ -11,24 +11,12 @@ card_summary: "Django REST backend on MongoDB for HCMUT's tutor programme: three
 permalink: /portfolio/hcmut-tutoring/
 ---
 
-HCMUT Tutoring is the account layer and landing page for a tutor programme at HCMUT: sign-up, login by role (student, tutor, manager), password reset and a public home page. It runs on Django REST Framework with MongoDB through `django-mongodb-backend`. The repo has no code for matching tutors to students or for scheduling, so it is the front door of the system and not the whole system.
+HCMUT Tutoring is the front door of a tutor programme at HCMUT. A tutor programme has three kinds of users with different rights, so the system first has to know who is signing in. It covers sign-up, login by role (student, tutor or manager), password reset and a public home page. It runs on Django REST Framework and MongoDB. Tutor matching and scheduling are not part of this repo.
 
-## Problem
+The login app has a custom user model with the three roles and hashed passwords. A login is rejected when the chosen role does not match the account. Each sign-in stores the IP and user agent, and there are endpoints for profile, password change and logout.
 
-A tutor programme has three kinds of users with different rights, so the system first has to know who is signing in and as what.
+Password reset issues a token that expires after 30 minutes and works once. The request endpoint answers the same way whether or not the email exists, so it never reveals which addresses are registered.
 
-## What was built
+A role picker leads into login. Read-only endpoints feed the home page with statistics, top categories, courses, instructors and testimonials. Four pages (home, login, role select, forgot password) are served as Django templates. A build script handles deployment, and a seed command creates one demo account per role.
 
-- `apps/login`: a custom `User` model with the roles `student`, `tutor` and `manager`, hashed passwords, and a service that rejects a login when the chosen role does not match the account. A `SessionActivity` record stores IP and user agent for each sign-in, and there are endpoints for profile, password change and logout.
-- `apps/forgetpassword`: reset tokens that expire after 30 minutes and can be used once. The request endpoint answers the same way whether or not the email exists, so it does not reveal which addresses are registered.
-- `apps/roleselect` and `apps/home`: a role picker, and read-only endpoints for statistics, top categories, courses, instructors and testimonials.
-- `frontend/`: four pages (home, login, role select, forgot password) served as Django templates.
-- `config/`: settings for MongoDB, WhiteNoise for static files, `build.sh` for deployment, and a `seed_users` command that creates one demo account per role.
-
-## Results
-
-After the migrations and the `seed_users` command, `manage.py runserver` brings up the site with demo accounts for each role.
-
-## Limits and next steps
-
-Tutor matching and scheduling are not built yet. Password reset returns its token in the response for the demo; a production version would send it by email.
+After the migrations and the seed command, the dev server brings up the site with a demo account for each role. Tutor matching and scheduling are still to build. The demo's reset endpoint returns its token in the response, and a production version would send it by email.

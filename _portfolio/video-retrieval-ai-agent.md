@@ -11,21 +11,12 @@ code: "https://github.com/khoadangnguyenn/Video-Retrieval-AI-Agent"
 card_summary: "Text-to-frame video search for Vietnamese content: CLIP embeddings, FAISS index, OCR-aware filtering, FastAPI backend and React frontend."
 permalink: /portfolio/video-retrieval-ai-agent/
 ---
+Finding one moment in hours of video by typing a description is slow without an index. The content is mostly Vietnamese, with on-screen text such as news tickers, and Vietnamese queries often arrive without diacritics. The system has to match all of that.
 
-## Problem
+Frames and detected objects are embedded with CLIP ViT-B/32 (512-d, OpenAI weights) and stored in FAISS indexes that can be searched by text or by image. A later version dropped the speech, OCR and scene signals from the embedding to reduce noise.
 
-Finding one moment in hours of video by typing a description is slow without an index. The content here is mostly Vietnamese, with on-screen text such as news tickers, and Vietnamese queries often arrive without diacritics. The system has to match all of that.
+Queries about on-screen text get their own path. It detects words like "ticker" and "subtitle", filters on OCR text first, strips Vietnamese diacritics so unaccented queries match, and falls back to semantic search. An optional LLM step expands the keywords.
 
-## What it does
+A FastAPI backend serves text, image and audio search, plus ingest and health checks. The React frontend shows results, and each one opens the source YouTube video at the matching frame.
 
-- Embeds frames and detected objects with CLIP ViT-B/32 (512-d, OpenAI weights) in `backend/embedding_model_2.py`. Its docstring says the second version dropped the ASR, OCR and scene modalities to reduce noise.
-- Searches FAISS indexes by text or by image (`backend/app/db/vector_db.py`).
-- Handles on-screen-text queries in `backend/scripts/search_text_frame.py`. It detects words like "ticker" and "subtitle", filters on OCR text first, strips Vietnamese diacritics so unaccented queries match, and falls back to semantic search. An optional LLM step (`--use-llm`) expands the keywords.
-- Serves the search through FastAPI routes under `/api/v1/search` (text, image, audio), `/ingest` and `/health` (`backend/app/main.py`).
-- Ships a React frontend (`frontend/src/components/`) whose results open the source YouTube video at the matching frame.
-
-The README describes a larger design: TransNetV2 scene cuts, Whisper ASR, PaddleOCR, YOLOv8, PhoBERT and Elasticsearch. The repo contains code for OCR, ASR and cross-encoder re-ranking, but the retrieval guide documents the CLIP-only path.
-
-## Limits and next steps
-
-The public repo is a snapshot of the competition code; the indexed data is not included, so it does not run on its own.
+The public repo is a snapshot of the competition code. The indexed data is not included, so it does not run on its own.

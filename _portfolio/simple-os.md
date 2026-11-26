@@ -14,19 +14,12 @@ card_result: "12 test configurations, each with a saved output"
 permalink: /portfolio/simple-os/
 ---
 
-This is the standard course simulation of an operating system's three main parts, a scheduler, synchronization and virtual-to-physical memory, with a system-call interface on top, in about 2,550 lines of C under `src/`. The license headers name the course as CO2018.
+This is the standard course simulation of an operating system, about 2,550 lines of C for CO2018 at HCMUT. It covers a scheduler, synchronization and virtual-to-physical memory, with a system-call interface on top.
 
-## What is in the repo
+The scheduler is a multi-level queue with 140 priority queues, guarded by a mutex. Queue number i gets 140 minus i time slots per round, and the counters reset once no queue can run. Each simulated CPU is its own thread, and all of them share one clock with mutex-protected timer events.
 
-- `src/sched.c` and `src/queue.c` implement a multi-level queue with `MAX_PRIO` 140 priority queues. Queue `i` gets `MAX_PRIO` minus `i` slots per round, and the counters reset when no queue can run. A mutex guards the queues.
-- `src/os.c` and `src/timer.c` run one thread per simulated CPU on a shared clock, with mutex-protected timer events.
-- `src/mm.c`, `src/mm-vm.c`, `src/mm-memphy.c` and `src/libmem.c` give each process a page table with 256-byte pages, RAM plus up to four swap devices, and allocate, free, read and write operations. `find_victim_page` picks the oldest page, so replacement is FIFO.
-- `src/syscall.tbl` lists three system calls: `listsyscall` (0), `memmap` (17) and `killall` (101).
+Memory gives each process a page table with 256-byte pages, plus RAM and up to four swap devices. Processes can allocate, free, read and write memory. When RAM is full, the oldest page is swapped out, so replacement is FIFO. Three system calls exist: one lists the available calls, one maps memory and one kills all processes.
 
-## How it works
+Each test is a plain-text config. The first line gives time slice, CPU count and process count. The second gives RAM size and up to four swap sizes. The remaining lines list start time, program and priority for each process. The 14 program files list calculate, allocate, free, read, write and system-call steps.
 
-Each test is a plain-text config in `input/`. Its first line is time slice, CPU count and process count. The second is RAM size and up to four swap sizes, and the rest list start time, program name and priority. Programs live in `input/proc/` (14 files) and are lists of `calc`, `alloc`, `free`, `read`, `write` and `syscall` steps.
-
-## Results
-
-`input/` holds 12 configurations, from single-CPU scheduling to 4 CPUs with paging at 1 KB, 4 KB and 1 MB of RAM. The repo also carries a saved trace for each in `output/`, such as `output/os_1_mlq_paging.output`, which shows the page-table dump after a free. I did not rebuild it. Build and run are `make all` then `./os`.
+There are 12 configurations, from single-CPU scheduling to 4 CPUs with paging at 1 KB, 4 KB and 1 MB of RAM. Each has a saved output trace,. Make builds it into a single executable.
