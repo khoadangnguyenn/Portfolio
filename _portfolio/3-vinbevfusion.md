@@ -1,6 +1,6 @@
 ---
 title: "Is it the model or the pose? Debugging a bird's-eye-view map"
-excerpt: "URA × VinFast engineering project, completed. A road-map model looked broken; the cause was the car's heading in the labels.<br/><img src='/Portfolio/images/teaser_heading.jpg' alt=''>"
+excerpt: "URA × VinFast engineering project, completed. A road-map model looked broken; the cause was the car's heading in the labels.<br/><img src='/images/teaser_heading.jpg' alt=''>"
 collection: portfolio
 when: "2026-01"   # Jan – Oct 2026, from CV PDF 2026-11-08
 venue: "URA × VinFast"
