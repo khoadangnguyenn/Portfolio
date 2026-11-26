@@ -1,0 +1,78 @@
+# Data for the resume-style homepage (layout home-resume). Copied from _pages/cv.md on 2026-11-25:
+# when you change one, change the other.
+# 2026-11-26: checked against LinkedIn (saved page of 2026-10-24: headline, About) and the CV PDF of 2026-11-08
+# (EyeCode dates and points, Top 10%, honors, tools). Hypmotion work is left out on purpose (company project).
+glance:
+  - label: "Now"
+    title: "AI Engineer, R&D"
+    org: "Hypmotion"
+    when: "Oct 2026 – present"
+  - label: "Research"
+    title: "Student researcher"
+    org: "URA group, HCMUT"
+    when: "Feb 2024 – present"
+  - label: "Education"
+    title: "B.Sc. Computer Science"
+    org: "HCMUT, VNU-HCM"
+    when: "2023 – 2027 (expected)"
+experience:
+  - when: "Oct 2026 – present"
+    title: "AI Engineer, R&D Department"
+    org: "Hypmotion Co., Ltd."
+  - when: "Feb 2024 – present"
+    title: "Student researcher"
+    org: "URA Research Group, HCMUT"
+    note: "Advised by Assoc. Prof. Quan Thanh Tho."
+    points:
+      - "Robot navigation with reinforcement learning, and lightweight trajectory prediction (MARS)."
+      - "Bird's-eye-view mapping project with VinFast."
+  - when: "Feb – Jul 2026"
+    title: "Research intern"
+    org: "EyeCode Tech"
+    points:
+      - "Applied vision-language (VLM) and vision-language-action (VLA) models to indoor robot navigation."
+      - "Built a ViNT + CLIP baseline from the ViNT and CLIP code, to support UrbanNav's baselines."
+      - "Fine-tuned SARL on 74 company scenarios (1,000+ RL episodes): training success rose from 72% to 83%."
+education:
+  - when: "2023 – 2027"
+    title: "B.Sc. in Computer Science (Japanese-oriented program)"
+    org: "Ho Chi Minh City University of Technology (HCMUT), VNU-HCM"
+    note: "Expected 2027. GPA 3.4 / 4.0, top 10%."
+skills:
+  - key: programming
+    label: "Programming"
+    text: "Python, C++"
+  - key: learning
+    label: "Learning and vision"
+    text: "PyTorch, TensorFlow, OpenCV, reinforcement learning (PPO)"
+  - key: robotics
+    label: "Robotics"
+    text: "ROS 2, PX4 SITL, Gazebo, Isaac Lab"
+  - key: tools
+    label: "Tools"
+    text: "Git, Linux, Docker, Azure DevOps"
+  - key: languages
+    label: "Languages"
+    items: ["Vietnamese – Native", "English – IELTS 6.5", "Japanese – JLPT N3"]   # one per line, no bullets, no brackets (user, 2026-11-26)
+# honors: add `proof: /images/honors/<file>.jpg` to show the item as a link that opens the certificate (user, 2026-11-26).
+honors:   # newest first. Certificates: images/honors/ (from LinkedIn via the user, 2026-11-26; date of birth and student ID blurred)
+  - when: "2025–26"
+    text: "Bach Khoa Innovation 2025, Top 40, university category"
+    proof: /images/honors/bach-khoa-innovation-2025.jpg
+  - when: "2024–25"
+    text: "HCMUT \"Good All-Round Student\""
+    proof: /images/honors/good-all-round-2024-25.jpg
+  - when: "2024–25"
+    text: "OISP Scholarship, semesters 1 and 2"
+    proof: /images/honors/oisp-scholarship-2024-25.jpg
+  - when: "2024–25"
+    text: "Web3 Ideathon, semi-finalist"
+    proof: /images/honors/web3-ideathon-2025.jpg
+  - when: "2023–24"
+    text: "OISP Presentation Contest, Top 10 (leader)"
+    proof: /images/honors/oisp-presentation-2023.jpg
+  - when: "2022–23"
+    text: "City-level Mathematics Competition, Second Prize"
+    proof: /images/honors/city-math-2022-23.jpg
+  - when: "2020–21"
+    text: "Olympic 30/4 in Mathematics, participant"

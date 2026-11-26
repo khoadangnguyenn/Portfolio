@@ -1,0 +1,11 @@
+---
+layout: null
+sitemap: false
+---
+# TEMPORARY (2026-11-25): keep search engines out of /files/ (the CV PDF) while ARDEN is under anonymous review.
+# Remove the Disallow line below after the AAMAS 2027 decision (latest 21 Jan 2027), and remove the
+# "files" sitemap default in _config.yml, so the CV can be found by search again.
+User-agent: *
+Disallow: /files/
+
+Sitemap: {{ site.url }}{{ site.baseurl }}/sitemap.xml

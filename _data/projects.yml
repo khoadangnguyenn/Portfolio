@@ -1,0 +1,183 @@
+# Everything on the homepage "by area" list (layout home-resume). Built 2026-11-25.
+# Sources: CV PDF of 2026-11-08 (files/NguyenDangKhoaCV.pdf) for dates, roles and results where it has them;
+# otherwise GitHub (github.com/khoadangnguyenn): first and last push month, description as written on GitHub.
+# date_src: cv | github | site. Left out on purpose: Portfolio, khoadangnguyenn (profile README),
+# Fulltime-Partner-CV (a web CV, possibly for another person), ARDEN (under anonymous review),
+# Garbage-Detection and SocialNav-Webpage (removed at the user's request, 2026-11-25).
+# skills: keys of the skill groups in _data/resume.yml (learning, robotics), tagged 2026-11-25 from each summary;
+# "programming" is added on the homepage from lang (Python / Jupyter). Please review.
+# Papers and blog posts are not listed here (user request 2026-11-25): they live on /publications/ and /year-archive/.
+areas:
+  # 2026-11-26 (user): computer vision and robotics merged into one area and listed first. `short` = filter button label.
+  - id: cvrobotics
+    name: "Computer vision and robotics"
+    short: "CV & robotics"
+  - id: llm
+    name: "LLMs and multimodal"
+    short: "LLMs"
+  - id: ml
+    name: "Machine learning and data"
+    short: "Machine learning"
+  - id: web
+    name: "Web and apps"
+    short: "Web"
+  - id: systems
+    name: "Systems and algorithms"
+    short: "Systems"
+items:
+  # ---------- LLMs and multimodal
+  - title: "Neuro-Symbolic RAG"
+    area: llm
+    kind: project
+    start: "2026-03"
+    end: "2026-07"
+    date_src: cv
+    role: "Team lead, 4 people"
+    summary: "A neuro-symbolic hybrid database behind retrieval-augmented generation, to stop LLM hallucinations on logic and physics questions."
+    result: "22 of 25 physics problems (88%) in round 1 of the IEEE IJCNN 2026 EXACT challenge."
+    repo: "Neuro-Symbolic-RAG"
+    url: /portfolio/neuro-symbolic-rag/
+    thumb: /images/work/nsrag.jpg   # 2026-11-26, same picture as the homepage card
+    lang: Python
+  - title: "Video Retrieval AI Agent"
+    area: llm
+    kind: repo
+    start: "2025-11"
+    end: "2026-03"
+    date_src: github
+    summary: "A multimodal AI model for video retrieval from a national big data repository."
+    skills: [learning]
+    repo: "Video-Retrieval-AI-Agent"
+    lang: Jupyter Notebook
+  - title: "E-Commerce Chatbot AI"
+    area: llm
+    kind: repo
+    start: "2025-11"
+    end: "2026-03"
+    date_src: github
+    summary: "A chatbot that integrates with major e-commerce platforms."
+    repo: "E-Commerce-Chatbot-AI"
+    lang: Python
+  # ---------- Computer vision
+  - title: "ADAS-L4 VinBEVFusion: bird's-eye-view segmentation with VinFast"
+    area: cvrobotics
+    kind: project
+    start: "2026-01"
+    end: "2026-10"
+    date_src: cv
+    role: "Technical lead, 5 people · URA group, HCMUT"
+    summary: "Lane and free-space detection, and multi-modal BEVFusion trained for bird's-eye-view segmentation on Vietnamese driving data. Found that wrong heading in the labels, not the model, caused a broken map."
+    result: "74.2% mIoU and 89.4% drivable-area IoU."
+    skills: [learning]
+    url: /portfolio/vinbevfusion/
+    thumb: /images/work/vinbev.jpg   # 2026-11-26, same picture as the homepage card
+  - title: "D-LAPA feature analysis"
+    area: cvrobotics
+    kind: repo
+    start: "2026-06"
+    end: "2026-06"
+    date_src: github
+    summary: "Redone feature analysis for D-LAPA depth injection."
+    skills: [learning]
+    repo: "D-LAPA-Feature-Analysis"
+    lang: Python
+  # ---------- Robotics and autonomous driving
+  - title: "NeuroDrive-K: path planning for autonomous driving"
+    area: cvrobotics
+    kind: project
+    start: "2026-01"
+    end: "2026-05"
+    date_src: cv
+    role: "Team lead, 4 people · course project"
+    summary: "A hybrid planner that combines machine learning, Bayesian and rule-based parts with A* search, under 35 ms per step."
+    result: "XGBoost: 78.1% accuracy on traffic behaviour prediction, R² 0.9946 on dynamic risk scoring."
+    skills: [learning, robotics]
+    repo: "NeuroDrive-K"
+    url: /portfolio/neurodrive-k/
+    thumb: /images/work/neurodrive.jpg   # 2026-11-26, same picture as the homepage card
+    lang: Jupyter Notebook
+  # ---------- Machine learning and data
+  - title: "EduCast AI"
+    area: ml
+    kind: repo
+    start: "2026-03"
+    end: "2026-03"
+    date_src: github
+    summary: "An ensemble pipeline (LightGBM, XGBoost, CatBoost with stacking) that predicts the probability a student passes; tuned for AUPRC with stratified 7-fold cross-validation."
+    skills: [learning]
+    repo: "EduCast-AI"
+    lang: Python
+  # ---------- Web and apps
+  - title: "Cloud Arena"
+    area: web
+    kind: repo
+    start: "2026-05"
+    end: "2026-05"
+    date_src: github
+    summary: "A game server rental platform with modpack support and easy server management."
+    repo: "Cloud-Arena"
+    lang: PHP
+  - title: "HCMUT Tutoring"
+    area: web
+    kind: repo
+    start: "2025-11"
+    end: "2025-12"
+    date_src: github
+    summary: "A system to run the university's tutor program, with a Django backend and a MongoDB database."
+    repo: "HCMUT-TUTORING"
+    lang: Python
+  - title: "Real-time stock monitoring"
+    area: web
+    kind: repo
+    start: "2025-05"
+    end: "2025-05"
+    date_src: github
+    summary: "An extension that tracks stock prices in real time and sends alerts on set conditions."
+    repo: "Real-time-Stock-Monitoring-System"
+    lang: Java
+  - title: "Oracle: dangerous-link checker"
+    area: web
+    kind: repo
+    start: "2024-04"
+    end: "2024-12"
+    date_src: github
+    summary: "A Chrome extension that checks whether a link is dangerous."
+    repo: "oracle-project"
+    lang: JavaScript
+  # ---------- Systems and algorithms
+  - title: "WeApRous"
+    area: systems
+    kind: repo
+    start: "2025-11"
+    end: "2025-11"
+    date_src: github
+    summary: "Network programming: the client–server and peer-to-peer paradigms built from the main components of a computer network."
+    repo: "WeApRous"
+    lang: Python
+  - title: "Cutting stock heuristics"
+    area: systems
+    kind: repo
+    start: "2025-11"
+    end: "2025-11"
+    date_src: github
+    summary: "A cutting stock solver with improved First Fit Decreasing and Best Fit Decreasing, to use less material and cut waste."
+    repo: "CSP-FitHeuristics"
+    lang: Python
+  - title: "Blockchain-integrated IoT system"
+    area: systems
+    kind: repo
+    start: "2025-08"
+    end: "2025-08"
+    date_src: github
+    summary: "An IoT platform that uses a blockchain to keep data intact and stop device forgery."
+    repo: "Blockchain-integrated-IoT-System"
+    lang: Python
+  - title: "Simple operating system"
+    area: systems
+    kind: repo
+    start: "2025-04"
+    end: "2025-05"
+    date_src: github
+    summary: "Operating system simulations in C."
+    repo: "Simple-Operation-System"
+    lang: C

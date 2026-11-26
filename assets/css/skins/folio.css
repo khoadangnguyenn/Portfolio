@@ -1,0 +1,22 @@
+/* Skin "folio": colours and type from the al-folio theme demo
+   (alshedivat.github.io/al-folio/assets/css/main.css, read 2026-11-22): Roboto, text #000,
+   light text #828282, theme colour #b509ac for links, dividers rgba(0,0,0,.1). */
+:root {
+  --global-bg-color: #ffffff;
+  --global-footer-bg-color: #ffffff;
+  --global-text-color: #000000;
+  --global-text-color-light: #828282;
+  --global-link-color: #b509ac;
+  --global-link-color-hover: #b509ac;
+  --global-link-color-visited: #b509ac;
+  --global-masthead-link-color: #000000;
+  --global-border-color: rgba(0, 0, 0, 0.1);
+}
+body, .masthead, .page__footer, .author__urls, .archive, .page__content { font-family: 'Roboto', sans-serif; font-weight: 300; }
+strong, b, .author__name, .archive__item-title { font-weight: 500; }
+.page__title { font-weight: 300; font-size: 2.6em; }
+.page__content h1, .page__content h2, .archive__subtitle { font-weight: 400; border-bottom: 1px solid rgba(0,0,0,.1); }
+.page__content a, .archive a, .archive__item-title a { text-decoration: none; }
+.page__content a:hover, .archive a:hover { text-decoration: underline; }
+.greedy-nav .visible-links a::before { background: #b509ac; }
+.page__footer { border-top: 1px solid rgba(0,0,0,.1); }

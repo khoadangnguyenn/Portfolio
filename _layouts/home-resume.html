@@ -1,0 +1,96 @@
+---
+layout: default
+---
+{% include base_path %}
+{% comment %}
+  Resume-style homepage (trial, 2026-11-25). The six things recruiters looked at first sit at the top:
+  name, current title and company, previous title and company, dates, education
+  (TheLadders eye-tracking study, 2012: ~80% of a 6-second review). Dated timeline with years on the left,
+  as on karpathy.ai. Section titles carry the content (NN/g layer-cake scanning, Pernice 2019).
+  Data: _data/resume.yml (copied from _pages/cv.md), work list from _includes/work-list.html.
+  To go back to the previous homepage, set `layout: home` in _pages/about.md.
+{% endcomment %}
+{% assign r = site.data.resume %}
+<main id="home" class="resume" role="main">
+  <header class="rs-head">
+    <div class="rs-wrap rs-head__inner">
+      <figure class="rs-face face-stage" title="Click to see the 3D point cloud">
+        <img src="{{ base_path }}/images/{{ site.author.avatar }}" alt="Portrait of {{ site.author.name }}" width="480" height="480">
+        <canvas aria-hidden="true" data-src="{{ '/assets/data/face-cloud.bin' | prepend: base_path }}"></canvas>
+      </figure>
+      <div class="rs-id">
+        <h1 class="rs-name">{{ site.author.name }}</h1>
+        <p class="rs-tag">{{ page.tagline }}</p>
+        {% comment %} 2026-11-26: location and local time as icon + text (user: "17:32 local time" looked plain). The time shows only with JS. {% endcomment %}
+        <p class="rs-meta">
+          <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>{{ site.author.location }}</span>
+          <span class="rs-clock-wrap" hidden title="Local time in Ho Chi Minh City"><i class="fa-solid fa-clock" aria-hidden="true"></i><span class="visually-hidden">Local time: </span><time class="rs-clock" data-tz="Asia/Ho_Chi_Minh"></time></span>
+        </p>
+        <p class="rs-links">
+          {% comment %} 2026-11-26: links as icon chips (user: blue underlined text looked odd). Pattern: Pathak's pill buttons, Nerfies' icon buttons. {% endcomment %}
+          {% if site.author.email %}<a class="rs-chip" href="mailto:{{ site.author.email }}"><i class="fas fa-envelope" aria-hidden="true"></i><span>{{ site.author.email }}</span></a>{% endif %}
+          {% if site.author.github %}<a class="rs-chip" href="https://github.com/{{ site.author.github }}"><i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span></a>{% endif %}
+          {% if site.author.linkedin %}<a class="rs-chip" href="https://www.linkedin.com/in/{{ site.author.linkedin }}"><i class="fab fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a>{% endif %}
+          <a class="rs-chip" href="{{ base_path }}/files/NguyenDangKhoaCV.pdf"><i class="fas fa-file-pdf" aria-hidden="true"></i><span>CV</span></a>
+        </p>
+      </div>
+    </div>
+    <div class="rs-wrap">
+      <dl class="rs-glance">
+        {% for g in r.glance %}
+        <div><dt>{{ g.label }}</dt><dd><b>{{ g.title }}</b><span>{{ g.org }}</span><time>{{ g.when }}</time></dd></div>
+        {% endfor %}
+      </dl>
+    </div>
+  </header>
+
+  <div class="rs-wrap rs-body">
+    <section class="rs-sec" aria-labelledby="rs-about"><h2 id="rs-about" class="rs-h">About</h2><div class="rs-prose">{{ content }}</div></section>
+
+    <section class="rs-sec" aria-labelledby="rs-exp"><h2 id="rs-exp" class="rs-h">Experience</h2>
+      <ol class="rs-tl rs-tl--draw">
+        {% for e in r.experience %}
+        <li><time>{{ e.when }}</time><div><b>{{ e.title }}</b><span class="rs-org">{{ e.org }}</span>
+          {% if e.note %}<p>{{ e.note }}</p>{% endif %}
+          {% if e.points %}<ul>{% for pt in e.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}</div></li>
+        {% endfor %}
+      </ol>
+    </section>
+
+    <section class="rs-sec" aria-labelledby="rs-edu"><h2 id="rs-edu" class="rs-h">Education</h2>
+      <ol class="rs-tl rs-tl--draw">
+        {% for e in r.education %}
+        <li><time>{{ e.when }}</time><div><b>{{ e.title }}</b><span class="rs-org">{{ e.org }}</span>{% if e.note %}<p>{{ e.note }}</p>{% endif %}</div></li>
+        {% endfor %}
+      </ol>
+    </section>
+  </div>
+
+
+  <div class="rs-wrap rs-body rs-two">
+    <section class="rs-sec" aria-labelledby="rs-skills"><h2 id="rs-skills" class="rs-h">Skills</h2>
+      <dl class="rs-kv">{% for s in r.skills %}<dt data-skill="{{ s.key }}">{{ s.label }}</dt><dd data-skill="{{ s.key }}">{% if s.items %}<ul class="rs-dlist">{% for x in s.items %}<li>{{ x }}</li>{% endfor %}</ul>{% else %}{{ s.text }}{% endif %}</dd>{% endfor %}</dl>
+      {% comment %} Projects that used these skills (motion pick 2026-11-25). Keys: "skills" in _data/projects.yml and in
+      publication front matter; "programming" is added for Python / Jupyter repos from their GitHub language. {% endcomment %}
+      {% assign gh = "https://github.com/" | append: site.author.github | append: "/" %}
+      <div class="rs-used"><p>Where I used them</p><ul>
+        {% for it in site.data.projects.items %}{% assign keys = it.skills | join: " " %}
+        {% if it.lang == "Python" or it.lang == "Jupyter Notebook" %}{% assign keys = keys | append: " programming" %}{% endif %}
+        {% assign keys = keys | strip %}{% if keys != "" %}
+        <li><a data-skills="{{ keys }}" href="{% if it.url %}{{ base_path }}{{ it.url }}{% else %}{{ gh }}{{ it.repo }}{% endif %}">{{ it.title | split: ":" | first }}</a></li>
+        {% endif %}{% endfor %}
+        {% for p in site.publications %}{% if p.skills %}<li><a data-skills="{{ p.skills | join: ' ' }}" href="{{ base_path }}{{ p.url }}">{{ p.title | split: ":" | first }} (paper)</a></li>{% endif %}{% endfor %}
+      </ul></div>
+    </section>
+    <section class="rs-sec" aria-labelledby="rs-hon"><h2 id="rs-hon" class="rs-h">Honors</h2>
+      <ol class="rs-tl rs-tl--compact">{% for h in r.honors %}<li><time>{{ h.when }}</time><div>{% if h.proof %}<a class="rs-proof" href="{{ base_path }}{{ h.proof }}" data-caption="{{ h.text | escape }}">{{ h.text }}<i class="fa-solid fa-image" aria-hidden="true"></i><span class="visually-hidden"> (view certificate)</span></a>{% else %}{{ h.text }}{% endif %}</div></li>{% endfor %}</ol>
+    </section>
+  </div>
+</main>
+{% comment %} Data for the preview cards on About links (assets/js/motion.js): url -> title, venue or summary, kind. {% endcomment %}
+<script type="application/json" id="mo-previews">{ {%- assign sep = "" -%}
+{%- for p in site.publications -%}{{ sep }}{{ p.url | jsonify }}: {"title": {{ p.title | jsonify }}, "text": {{ p.status | default: p.venue | jsonify }}, "kind": "Paper"}{%- assign sep = ", " -%}{%- endfor -%}
+{%- for p in site.portfolio -%}{{ sep }}{{ p.url | jsonify }}: {"title": {{ p.title | jsonify }}, "text": {{ p.summary | default: p.excerpt | strip_html | strip_newlines | jsonify }}, "kind": "Project"}{%- assign sep = ", " -%}{%- endfor -%}
+{%- for p in site.posts -%}{{ sep }}{{ p.url | jsonify }}: {"title": {{ p.title | jsonify }}, "text": {{ p.excerpt | strip_html | strip_newlines | jsonify }}, "kind": "Post"}{%- assign sep = ", " -%}{%- endfor -%} }</script>
+<script defer src="{{ base_path }}/assets/js/face-cloud.js"></script>
+<script defer src="{{ base_path }}/assets/js/story.js"></script>

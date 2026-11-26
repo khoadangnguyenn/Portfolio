@@ -1,0 +1,73 @@
+{% comment %} Work list shared by layouts home and home-resume. Params: news (true/false), title. {% endcomment %}
+  {% comment %}
+    Work list: every paper, project, post and news item in one list, newest first, grouped by year,
+    each row labelled with its type, with a filter by type. References: maggieappleton.com (type + age on
+    each item), gawtamcr.github.io (News with a type badge per date), weibb/publication-timeline
+    ("browse ... in chronological order and filter ... by type"), NN/g "Undated Content" (2003).
+    Projects take their date from front matter `when` ("YYYY-MM" or "YYYY"); a project without it is
+    listed under "Other projects" with no date rather than given a made-up one.
+  {% endcomment %}
+  {% assign n_paper = site.publications | size %}
+  {% assign n_project = site.portfolio | size %}
+  {% assign n_writing = site.posts | size %}
+  {% if include.news %}{% assign n_news = site.data.news | size %}{% else %}{% assign n_news = 0 %}{% endif %}
+  {% assign n_all = n_paper | plus: n_project | plus: n_writing | plus: n_news %}
+  <section class="work reveal" id="work" aria-labelledby="work-h">
+    <div class="work__inner">
+      <div class="work__head">
+        <h2 id="work-h" class="chapter__kicker">{{ include.title | default: "Work and writing" }}</h2>
+        <div class="work__filter" role="group" aria-label="Show only one type" hidden>
+          <button type="button" id="wf-all" data-kind="all" aria-pressed="true">All <small>{{ n_all }}</small></button>
+          <button type="button" id="wf-paper" data-kind="paper" aria-pressed="false"><span class="work__type work__type--paper">Papers</span> <small>{{ n_paper }}</small></button>
+          <button type="button" id="wf-project" data-kind="project" aria-pressed="false"><span class="work__type work__type--project">Projects</span> <small>{{ n_project }}</small></button>
+          <button type="button" id="wf-writing" data-kind="writing" aria-pressed="false"><span class="work__type work__type--writing">Writing</span> <small>{{ n_writing }}</small></button>
+          {% if include.news %}<button type="button" id="wf-news" data-kind="news" aria-pressed="false"><span class="work__type work__type--news">News</span> <small>{{ n_news }}</small></button>{% endif %}
+        </div>
+      </div>
+      {% assign this_year = site.time | date: "%Y" | plus: 0 %}
+      {% for y in (2020..this_year) reversed %}
+        {% assign ys = y | append: "" %}
+        {% capture rows %}
+          {% for m in (1..12) reversed %}
+            {% if m < 10 %}{% assign key = ys | append: "-0" | append: m %}{% else %}{% assign key = ys | append: "-" | append: m %}{% endif %}
+            {% for p in site.posts %}{% assign k = p.date | date: "%Y-%m" %}{% if k == key %}
+              {% assign w = p.date | date: "%b %-d" %}{% include work-row.html kind="writing" when=w title=p.title url=p.url summary=p.excerpt venue="Blog post" thumb=p.thumb %}
+            {% endif %}{% endfor %}
+            {% for p in site.publications %}{% assign k = p.date | date: "%Y-%m" %}{% if k == key %}
+              {% assign w = p.date | date: "%b %-d" %}{% include work-row.html kind="paper" when=w title=p.title url=p.url summary=p.authors_short venue=p.venue thumb=p.thumb %}
+            {% endif %}{% endfor %}
+            {% for p in site.portfolio %}{% assign k = p.when | append: "" %}{% if k == key %}
+              {% assign sm = p.summary | default: p.excerpt | strip_html %}
+              {% assign w = key | append: "-01" | date: "%b" %}{% include work-row.html kind="project" when=w title=p.title url=p.url summary=sm venue=p.venue thumb=p.thumb %}
+            {% endif %}{% endfor %}
+            {% if include.news %}{% for p in site.data.news %}{% assign k = p.date | date: "%Y-%m" %}{% if k == key %}
+              {% if p.month_only %}{% assign w = p.date | date: "%b" %}{% else %}{% assign w = p.date | date: "%b %-d" %}{% endif %}{% include work-row.html kind="news" when=w title=p.text %}
+            {% endif %}{% endfor %}{% endif %}
+          {% endfor %}
+          {% for p in site.portfolio %}{% assign k = p.when | append: "" %}{% if k == ys %}
+            {% assign sm = p.summary | default: p.excerpt | strip_html %}
+            {% include work-row.html kind="project" when="" title=p.title url=p.url summary=sm venue=p.venue thumb=p.thumb %}
+          {% endif %}{% endfor %}
+        {% endcapture %}
+        {% assign n = rows | split: 'class="work__row' | size | minus: 1 %}
+        {% if n > 0 %}
+        <div class="work__year">
+          <h3 class="work__y">{{ y }}</h3>
+          <ul class="work__list">{{ rows }}</ul>
+        </div>
+        {% endif %}
+      {% endfor %}
+      {% capture rows %}{% for p in site.portfolio %}{% unless p.when %}
+        {% assign sm = p.summary | default: p.excerpt | strip_html %}
+        {% include work-row.html kind="project" when="" title=p.title url=p.url summary=sm venue=p.venue thumb=p.thumb %}
+      {% endunless %}{% endfor %}{% endcapture %}
+      {% assign n = rows | split: 'class="work__row' | size | minus: 1 %}
+      {% if n > 0 %}
+      <div class="work__year">
+        <h3 class="work__y">Other projects</h3>
+        <ul class="work__list">{{ rows }}</ul>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+

@@ -1,0 +1,16 @@
+{% comment %}
+  One row of the homepage work list. Params: kind (paper|project|writing|news), when (shown date text),
+  title, url, summary, venue, thumb, alt. Type is shown as word + shape + colour (WCAG 2.2, 1.4.1 Use of Color).
+{% endcomment %}
+{% assign labels = "paper:Paper,project:Project,writing:Writing,news:News" | split: "," %}
+{% for l in labels %}{% assign kv = l | split: ":" %}{% if kv[0] == include.kind %}{% assign label = kv[1] %}{% endif %}{% endfor %}
+<li class="work__row" data-kind="{{ include.kind }}">
+  <span class="work__when">{{ include.when }}</span>
+  <span class="work__type work__type--{{ include.kind }}">{{ label }}</span>
+  <div class="work__body">
+    {% if include.url %}<a class="work__title" href="{{ base_path }}{{ include.url }}">{{ include.title }}</a>{% else %}<span class="work__title">{{ include.title }}</span>{% endif %}
+    {% if include.summary %}<p class="work__summary">{{ include.summary }}</p>{% endif %}
+    {% if include.venue %}<p class="work__venue">{{ include.venue }}</p>{% endif %}
+  </div>
+  {% if include.thumb %}<a class="work__thumb" href="{{ base_path }}{{ include.url }}" tabindex="-1" aria-hidden="true"><img src="{{ base_path }}{{ include.thumb }}" alt="" loading="lazy"></a>{% endif %}
+</li>

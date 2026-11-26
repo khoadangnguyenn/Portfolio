@@ -1,0 +1,26 @@
+/* Skin "paper": colours, type and photo shape from Andy Zeng's homepage
+   (andyzeng.github.io/main.css, read 2026-11-22): Asap, text #150c21, links rgb(20,110,190),
+   warm off-white #fdf9f4 with a faint SVG paper grain, rounded-rectangle photo (radius .3em). */
+:root {
+  --global-bg-color: #fdf9f4;
+  --global-footer-bg-color: #f6efe5;
+  --global-text-color: #150c21;
+  --global-text-color-light: #a0a8b0;
+  --global-link-color: rgb(20, 110, 190);
+  --global-link-color-hover: rgb(20, 110, 190);
+  --global-link-color-visited: rgb(20, 110, 190);
+  --global-masthead-link-color: #150c21;
+  --global-border-color: #ece3d6;
+}
+html:not([data-theme="dark"]) body {
+  background-color: #fdf9f4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+body, .masthead, .page__footer, .author__urls, .archive, .page__content { font-family: 'Asap', Roboto, sans-serif; }
+html:not([data-theme="dark"]) .masthead, html:not([data-theme="dark"]) .greedy-nav { background: transparent; }
+.page__content a, .archive a { text-decoration: none; }
+.page__content a:hover, .archive a:hover { text-decoration: underline; }
+.page__title, .archive__subtitle, .page__content h1, .page__content h2 { font-weight: 500; border-bottom: 0; }
+.archive__item-title a { text-decoration: none; }
+.author__avatar img, .avatar-swap canvas { border-radius: .3em !important; }
+@media (min-width: 64em) { .author__avatar img { border: 0; padding: 0; } .avatar-swap canvas { inset: 0 !important; width: 100% !important; height: 100% !important; } }

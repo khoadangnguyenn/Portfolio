@@ -1,0 +1,101 @@
+/* Motion layer, added 2026-11-25 from the picks on the "Portfolio Motion Menu" page.
+   Rules used for every timing below:
+   - NN/g, Laubheimer 2020, "Executing UX Animations": most animations 100–500 ms; ease-out; popups ~300 ms in, 200 ms out.
+   - Emil Kowalski, "You Don't Need Animations": UI animations under 300 ms; rare actions may run longer.
+   - W3C Understanding SC 2.3.3 + MDN prefers-reduced-motion: everything here is off under reduced motion.
+   Script side: assets/js/motion.js. */
+
+:root { --mo-out: cubic-bezier(.2, .7, .2, 1); }
+
+/* ---------- 1. page-to-page transition (cross-document view transitions, Chrome/Edge 126+, Safari 18.2+) ----------
+   Old page fades and drifts left in 200 ms, new page drifts in over 260 ms. The top menu keeps its own name so it stays still. */
+.masthead { view-transition-name: masthead; }
+::view-transition-old(root) { animation: 200ms ease-in both mo-out; }
+::view-transition-new(root) { animation: 260ms var(--mo-out) both mo-in; }
+@keyframes mo-out { to { opacity: 0; transform: translateX(-12px); } }
+@keyframes mo-in { from { opacity: 0; transform: translateX(12px); } }
+
+/* ---------- 2. theme switch: the new theme spreads as a circle from the button (420 ms; rare action) ---------- */
+html.mo-theme *, html.mo-theme *::before, html.mo-theme *::after { transition: none !important; }
+html.mo-theme::view-transition-old(root) { animation: none; }
+html.mo-theme::view-transition-new(root) { animation: 420ms var(--mo-out) both mo-reveal; }
+html.mo-theme .masthead { view-transition-name: none; }   /* the menu bar recolours inside the same circle */
+@keyframes mo-reveal {
+  from { clip-path: circle(0 at var(--mo-x, 100%) var(--mo-y, 0)); }
+  to { clip-path: circle(var(--mo-r, 150vmax) at var(--mo-x, 100%) var(--mo-y, 0)); }
+}
+
+/* ---------- 3. reading progress on blog posts (scroll-driven; JS fallback in motion.js) ---------- */
+.mo-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 30; background: var(--st-kicker); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+@supports (animation-timeline: scroll()) {
+  .mo-progress { animation: mo-grow-x linear both; animation-timeline: scroll(root block); }
+}
+@keyframes mo-grow-x { to { transform: scaleX(1); } }
+
+/* ---------- 6. local time next to the location ---------- */
+.rs-clock { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ---------- 7. soft light that follows the pointer over the three summary cells (mouse only) ---------- */
+@media (hover: hover) {
+  .rs-glance > div { background: radial-gradient(220px circle at var(--mo-mx, -400px) var(--mo-my, -400px), color-mix(in srgb, var(--st-scene-accent) 13%, transparent), transparent 70%); }
+}
+
+/* ---------- 8. timeline line that draws itself while scrolling (Experience, Education) ----------
+   The line sits in the 20 px gap between the date column (168 px) and the text. */
+.rs-tl--draw { position: relative; }
+.rs-tl--draw::before, .rs-tl--draw::after { content: ""; position: absolute; top: 24px; bottom: 24px; left: 177px; width: 2px; }
+.rs-tl--draw::before { background: var(--st-line); }
+.rs-tl--draw::after { background: var(--st-kicker); transform-origin: 50% 0; transform: scaleY(var(--mo-p, 1)); }
+.rs-tl--draw > li { position: relative; }
+.rs-tl--draw > li::before { content: ""; position: absolute; left: 173px; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--st-bg); border: 2px solid var(--st-kicker); z-index: 1; }
+@supports (animation-timeline: view()) {
+  .rs-tl--draw::after { animation: mo-grow-y linear both; animation-timeline: view(); animation-range: entry 40% cover 65%; }
+}
+.mo-js .rs-tl--draw::after { transform: scaleY(var(--mo-p, 0)); }
+@keyframes mo-grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (max-width: 720px) {   /* date column stacks above the text: move the line to the left edge */
+  .rs-tl--draw > li { padding-left: 22px; }
+  .rs-tl--draw::before, .rs-tl--draw::after { left: 4px; }
+  .rs-tl--draw > li::before { left: 0; }
+}
+
+/* ---------- 9. preview card on About links (shows after 250 ms hover; 300 ms in, 200 ms out) ---------- */
+.mo-card { position: absolute; z-index: 40; width: min(340px, calc(100vw - 32px)); background: var(--st-bg); color: var(--st-ink); border: 1px solid var(--st-line); border-radius: 10px; padding: 12px 14px; font-size: 14.5px; line-height: 1.45; box-shadow: 0 10px 30px rgba(0, 0, 0, .14); opacity: 0; transform: translateY(4px); pointer-events: none; transition: opacity 200ms ease-in, transform 200ms ease-in; }
+.mo-card.is-on { opacity: 1; transform: none; transition: opacity 300ms var(--mo-out), transform 300ms var(--mo-out); }
+.mo-card b { display: block; font-weight: 600; margin-bottom: 4px; }
+.mo-card span { display: block; color: var(--st-muted); }
+.mo-card small { display: block; margin-top: 6px; color: var(--st-kicker); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---------- 10. skills ↔ projects: hover a skill row, the projects that used it light up (150 ms) ---------- */
+.rs-kv [data-skill] { cursor: default; transition: color 150ms ease-out; }
+.rs-kv .is-hot { color: var(--st-kicker); }
+.rs-used { margin: 14px 0 0; }
+.rs-used p { margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--st-muted); }
+.rs-used ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.rs-used li { margin: 0; }
+.rs-used a { display: inline-block; padding: 3px 10px; border: 1px solid var(--st-line); border-radius: 999px; font-size: 14px; color: var(--st-ink); text-decoration: none; transition: opacity 150ms ease-out, border-color 150ms ease-out, background-color 150ms ease-out; }
+.rs-used a:hover { border-color: var(--st-kicker); }
+.rs-used.is-dim a { opacity: .32; }
+.rs-used.is-dim a.is-hit { opacity: 1; border-color: var(--st-kicker); background: color-mix(in srgb, var(--st-kicker) 10%, transparent); }
+
+/* ---------- 11. project filter: rows slide to their new place (same-document view transition, 260 ms) ---------- */
+::view-transition-group(*.mo-row) { animation-duration: 260ms; animation-timing-function: var(--mo-out); }
+
+/* ---------- 12. interactive figure in the fisheye post ---------- */
+.fe-demo { margin: 1.5em 0; }
+.fe-demo__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fe-demo figure { margin: 0; text-align: center; }
+.fe-demo canvas { display: block; width: 100%; aspect-ratio: 1; border: 1px solid var(--st-line); border-radius: 8px; background: var(--st-bg); }
+.fe-demo figcaption { font-size: 14px; color: var(--st-muted); margin-top: 4px; }
+.fe-demo__ctl { display: flex; align-items: center; gap: 12px; margin-top: 10px; font-size: 15px; }
+.fe-demo__ctl input { flex: 1; accent-color: var(--st-kicker); }
+.fe-demo__ctl output { min-width: 4.5ch; font-variant-numeric: tabular-nums; font-weight: 600; }
+.fe-demo__note { font-size: 14px; color: var(--st-muted); margin: 8px 0 0; }
+
+/* ---------- reduced motion: no view transitions, no drawn line, no fades ---------- */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  .rs-tl--draw::after, .mo-js .rs-tl--draw::after { animation: none; transform: none; }
+  .mo-card, .mo-card.is-on, .rs-used a, .rs-kv [data-skill] { transition: none; }
+  .mo-progress { display: none; }
+}

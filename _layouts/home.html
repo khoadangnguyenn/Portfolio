@@ -1,0 +1,65 @@
+---
+layout: default
+---
+{% include base_path %}
+{% comment %}
+  Homepage: an interactive scene on top (face point cloud + four section tiles), then one work list (papers, projects, posts, news) grouped by year.
+  References: cecibaldoni.github.io (Best Interactive Website 2025, "city-like navigation on the front page"),
+  erikacedillo.com (Best Storytelling 2025). Judges asked Baldoni for bigger text, so body text here is 18 px.
+{% endcomment %}
+{% assign latest_pub = site.publications | sort: "date" | last %}
+{% assign latest_post = site.posts | first %}
+
+<script>
+  // cover the page before first paint when the face intro will play (same test as face-cloud.js)
+  try { if ((sessionStorage.getItem('faceCloudSeen') !== '1' || /[?&]intro\b/.test(location.search)) && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches))
+    document.documentElement.classList.add('face-intro-pending'); } catch (e) {}
+</script>
+<main id="home" class="story-home" role="main">
+
+  <section class="scene" aria-label="Introduction">
+    <div class="scene__inner">
+      <figure class="scene__face face-stage" title="Click to replay">
+        <img src="{{ base_path }}/images/{{ site.author.avatar }}" alt="Portrait of {{ site.author.name }}" width="480" height="480">
+        <canvas aria-hidden="true" data-src="{{ '/assets/data/face-cloud.bin' | prepend: base_path }}"></canvas>
+        <figcaption>Depth estimated from this one photo · click to replay</figcaption>
+      </figure>
+      <div class="scene__text">
+        <p class="scene__kicker">{{ page.tagline }}</p>
+        <h1 class="scene__name">{{ site.author.name }}</h1>
+        <p class="scene__bio">{{ site.author.bio }}</p>
+        <nav class="scene__nodes" aria-label="Sections">
+          <a class="node" href="{{ base_path }}/publications/"><b>Publications</b><span>{% if latest_pub %}{{ latest_pub.title | split: ":" | first }} · {{ latest_pub.date | date: "%Y" }}{% endif %}</span></a>
+          <a class="node" href="{{ base_path }}/portfolio/"><b>Portfolio</b><span>{{ site.portfolio | size }} projects</span></a>
+          <a class="node" href="{{ base_path }}/year-archive/"><b>Blog Posts</b><span>{% if latest_post %}{{ latest_post.title }}{% endif %}</span></a>
+          <a class="node" href="{{ base_path }}/cv/"><b>CV</b><span>Education, experience, skills</span></a>
+        </nav>
+        <p class="scene__links">
+          {% if site.author.email %}<a href="mailto:{{ site.author.email }}">Email</a>{% endif %}
+          {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}">GitHub</a>{% endif %}
+          {% if site.author.linkedin %}<a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a>{% endif %}
+        </p>
+      </div>
+    </div>
+    <a class="scene__down" href="#about" aria-label="Scroll to the story">↓</a>
+  </section>
+
+  <section class="chapter chapter--intro reveal" id="about">
+    <div class="chapter__inner chapter__inner--narrow">
+      <p class="chapter__kicker">About</p>
+      {{ content }}
+    </div>
+  </section>
+
+  {% include work-list.html news=true %}
+
+  <nav class="strip" aria-label="Sections">
+    <a href="{{ base_path }}/publications/"><small>Publications</small>All papers</a>
+    <a href="{{ base_path }}/portfolio/"><small>Portfolio</small>All projects</a>
+    <a href="{{ base_path }}/year-archive/"><small>Blog Posts</small>All posts</a>
+    <a href="{{ base_path }}/cv/"><small>CV</small>Full CV</a>
+  </nav>
+</main>
+
+<script defer src="{{ base_path }}/assets/js/face-cloud.js"></script>
+<script defer src="{{ base_path }}/assets/js/story.js"></script>

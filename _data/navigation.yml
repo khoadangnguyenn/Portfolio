@@ -1,0 +1,14 @@
+# Top menu. Portfolio removed 2026-11-25; Projects (/projects/) lists everything by area;
+# CV opens the PDF (files/NguyenDangKhoaCV.pdf, the CV of 2026-11-08).
+main:
+  - title: "Publications"
+    url: /publications/
+
+  - title: "Projects"
+    url: /projects/
+
+  - title: "Blog Posts"
+    url: /year-archive/
+
+  - title: "CV"
+    url: /files/NguyenDangKhoaCV.pdf

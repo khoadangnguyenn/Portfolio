@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{% include base_path %}
+{% comment %} Projects page: everything by area (_data/projects.yml via _includes/area-list.html). Moved off the homepage 2026-11-25. {% endcomment %}
+<main id="home" class="resume rs-projects" role="main">
+  <header class="rs-head rs-head--page">
+    <div class="rs-wrap">
+      <h1 class="rs-name">{{ page.title }}</h1>
+      {% if page.lede %}<p class="rs-tag">{{ page.lede }}</p>{% endif %}
+    </div>
+  </header>
+  <div style="height:32px"></div>
+  {% include area-list.html %}
+</main>
+<script defer src="{{ base_path }}/assets/js/story.js"></script>

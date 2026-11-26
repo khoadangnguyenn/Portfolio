@@ -1,0 +1,18 @@
+/* Skin "columbia": colours and type from Cheng Chi's homepage
+   (cheng-chi.github.io/assets/css/style.css, read 2026-11-22): Source Sans Pro 300,
+   headings 500, name in blue rgb(0,51,160), links rgb(0,114,206), accent #F9564F, grey rgb(90,90,90). */
+:root {
+  --global-text-color: rgb(40, 40, 40);
+  --global-text-color-light: rgb(90, 90, 90);
+  --global-link-color: rgb(0, 114, 206);
+  --global-link-color-hover: #F9564F;
+  --global-link-color-visited: rgb(0, 114, 206);
+  --global-masthead-link-color: rgb(2, 33, 105);
+}
+body, .masthead, .page__footer, .author__urls, .archive, .page__content { font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif; font-weight: 300; }
+strong, b { font-weight: 600; }
+.page__title, .page__content h1, .page__content h2, .archive__subtitle { font-weight: 500; color: rgb(2, 33, 105); }
+.author__name { font-weight: 400; font-size: 1.5em; color: rgb(0, 51, 160); }
+.page__content a, .archive a, .archive__item-title a { text-decoration: none; transition: color .3s ease; }
+.page__content strong { color: #F9564F; font-weight: 600; }
+.greedy-nav .visible-links a::before { background: #F9564F; }
