@@ -43,7 +43,7 @@ Distance from the centre grows *linearly* with angle. With the same $$f = 300$$ 
 
 Real lenses drift from the ideal, so calibration fits a few extra polynomial terms in $$\theta$$. The idea stays the same: radius as a function of angle.
 
-<figure><img src="/images/fig_projection.jpg" alt="" loading="lazy" /><figcaption>One ray at 82.3° off the optical axis, imaged by two models on the same sensor (f = 300 px, half-width 511 px). The pinhole model puts it at about 2,200 px, far off the sensor; past 90° it has no image point at all. The equidistant model puts it at 431 px, inside the sensor.</figcaption></figure>
+<figure><img src="{{ site.baseurl }}/images/fig_projection.jpg" alt="" loading="lazy" /><figcaption>One ray at 82.3° off the optical axis, imaged by two models on the same sensor (f = 300 px, half-width 511 px). The pinhole model puts it at about 2,200 px, far off the sensor; past 90° it has no image point at all. The equidistant model puts it at 431 px, inside the sensor.</figcaption></figure>
 
 {% include fisheye-demo.html %}
 

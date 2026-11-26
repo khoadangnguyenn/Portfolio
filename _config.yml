@@ -16,8 +16,8 @@ name                     : &name "Nguyen Dang Khoa"
 description              : &description "Nguyen Dang Khoa: robot perception and navigation. AI Engineer (R&D) at Hypmotion, student researcher at HCMUT."
 url                      : https://khoadangnguyenn.github.io
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "khoadangnguyenn/khoadangnguyenn.github.io"
+baseurl                  : "/Portfolio" # the subpath of your site, e.g. "/blog"
+repository               : "khoadangnguyenn/Portfolio"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.

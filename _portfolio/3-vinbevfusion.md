@@ -1,6 +1,6 @@
 ---
 title: "Is it the model or the pose? Debugging a bird's-eye-view map"
-excerpt: "URA × VinFast engineering project, completed. A road-map model looked broken; the cause was the car's heading in the labels.<br/><img src='/images/teaser_heading.jpg' alt=''>"
+excerpt: "URA × VinFast engineering project, completed. A road-map model looked broken; the cause was the car's heading in the labels.<br/><img src='/Portfolio/images/teaser_heading.jpg' alt=''>"
 collection: portfolio
 when: "2026-01"   # Jan – Oct 2026, from CV PDF 2026-11-08
 venue: "URA × VinFast"
@@ -22,7 +22,7 @@ I was the technical lead of a five-person team and owned benchmarking and runtim
 
 There were two reasonable next steps: tune the network, or audit how each label was placed. Map labels are drawn around the car using its recorded heading, so a wrong heading rotates the whole label. The recorded heading turned out to be the direction of motion, not the direction the car was facing. It read zero whenever the car stopped and pointed backwards whenever the car reversed. A gyroscope reading confirmed the car's body was not actually turning in those moments. The fix was to take heading from the inertial navigation system and fall back to the last valid value.
 
-<figure><img src="/images/fig_heading.jpg" alt="" loading="lazy" /><figcaption>The same drive seen two ways. Left: yaw taken from the direction of motion. When the car stops, the yaw snaps to a fixed value; when it reverses, it flips by 180°, and the road label rotates with it. Right: yaw from the inertial heading keeps the label on the road.</figcaption></figure>
+<figure><img src="{{ site.baseurl }}/images/fig_heading.jpg" alt="" loading="lazy" /><figcaption>The same drive seen two ways. Left: yaw taken from the direction of motion. When the car stops, the yaw snaps to a fixed value; when it reverses, it flips by 180°, and the road label rotates with it. Right: yaw from the inertial heading keeps the label on the road.</figcaption></figure>
 
 ## Evidence
 
