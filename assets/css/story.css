@@ -378,3 +378,23 @@ body:has(.rs-wrap) { --mh-col: 932px; --mh-pad: 24px; }
   .masthead__inner-wrap .greedy-nav .visible-links .masthead__menu-item--lg { margin-right: auto; }
   .masthead__inner-wrap .greedy-nav .visible-links #theme-toggle { margin-right: 0; padding-right: 0; }
 }
+
+/* Project page head (2026-11-26): tagline, facts, link chips, results, teaser */
+.pj-tagline { font-size: 19px; line-height: 1.5; color: var(--st-ink); margin: 0 0 18px; }
+.pj-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px 24px; margin: 0 0 18px; padding: 14px 0; border-top: 1px solid var(--st-line); border-bottom: 1px solid var(--st-line); }
+.pj-facts dt { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--st-kicker); font-weight: 600; margin: 0 0 2px; }
+.pj-facts dd { margin: 0; font-size: 15px; line-height: 1.45; }
+.pj-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+.pj-results { background: var(--st-bg-alt); border-left: 3px solid var(--st-kicker); padding: 12px 16px; margin: 0 0 24px; }
+.pj-results__h { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--st-kicker); font-weight: 600; margin: 0 0 6px !important; }
+.pj-results ul { margin: 0; padding-left: 18px; }
+.pj-results li { font-size: 15.5px; line-height: 1.5; margin: 2px 0; }
+.pj-teaser { margin: 0 0 28px; }
+.pj-teaser img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--st-line); }
+.pj-teaser figcaption { font-size: 14px; color: var(--st-muted); margin-top: 6px; }
+/* Same chip on project pages, in page colours (not the header scene colours) */
+.pj-links a.rs-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border: 1px solid var(--st-line); border-radius: 999px;
+  background: var(--st-bg); color: var(--st-ink) !important; font-size: 14.5px; line-height: 1.2; text-decoration: none !important; transition: border-color 160ms, color 160ms; }
+.pj-links a.rs-chip i { font-size: 14px; color: var(--st-muted); }
+.pj-links a.rs-chip:hover, .pj-links a.rs-chip:focus-visible { border-color: var(--st-link); color: var(--st-link) !important; }
+.pj-links a.rs-chip:hover i { color: var(--st-link); }

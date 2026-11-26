@@ -49,6 +49,7 @@ layout: default
 
       <section class="page__content" itemprop="text">
         {% comment %} 2026-11-26 (user): abstract replaces "Recommended citation". Set `abstract:` in the paper's front matter. {% endcomment %}
+        {% if page.collection == "portfolio" %}{% include base_path %}{% include project-head.html %}{% endif %}
         {% if page.abstract %}<h2 class="pub-abstract__h">Abstract</h2><p class="pub-abstract">{{ page.abstract }}</p>{% endif %}
         {{ content }}
 

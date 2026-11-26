@@ -1,8 +1,22 @@
 ---
 title: "Is it the model or the pose? Debugging a bird's-eye-view map"
-excerpt: "URA × VinFast engineering project, completed. A road-map model looked broken; the cause was the car's heading in the labels.<br/><img src='/images/teaser_heading.jpg' alt=''>"
+excerpt: "URA × VinFast engineering project, completed. A road-map model looked broken; the cause was the car's heading in the labels."
+tagline: "Debugging a bird's-eye-view road map on Vietnamese driving data: the labels' heading, not the model, held mean IoU near 0.40."
 collection: portfolio
-when: "2026-01"   # Jan – Oct 2026, from CV PDF 2026-11-08
+when: "Jan – Oct 2026"   # from CV PDF 2026-11-08
+start: "2026-01"
+end: "2026-10"
+role: "Technical lead, 5 people"
+context: "URA Research Group, HCMUT × VinFast"
+stack: [BEVFusion, nuScenes format, LiDAR, six cameras]
+results:
+  - "74.2% mIoU and 89.4% drivable-area IoU for BEVFusion trained on Vietnamese driving data."
+  - "Mean IoU rose from about 0.40 to about 0.74 on the same validation frames after the label heading was corrected."
+teaser: /images/fig_heading.jpg
+teaser_alt: "The same drive with yaw from direction of motion (left) and from the inertial heading (right)"
+teaser_caption: "The same drive with yaw from the direction of motion (left) and from the inertial heading (right)."
+card_summary: "BEVFusion for bird's-eye-view lane and free-space maps on Vietnamese driving data; the failure traced to heading in the labels, not the model."
+card_result: "74.2% mIoU, 89.4% drivable-area IoU"
 venue: "URA × VinFast"
 summary: "A road map predicted from car cameras looked like a model failure. The cause was the car's heading in the training labels. Corrected labels raised mean IoU from about 0.40 to about 0.74 on the same validation frames."
 thumb: /images/fig_heading.jpg

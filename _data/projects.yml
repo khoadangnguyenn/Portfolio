@@ -48,6 +48,7 @@ items:
     summary: "A multimodal AI model for video retrieval from a national big data repository."
     skills: [learning]
     repo: "Video-Retrieval-AI-Agent"
+    url: /portfolio/video-retrieval-ai-agent/
     lang: Jupyter Notebook
   - title: "E-Commerce Chatbot AI"
     area: llm
@@ -57,6 +58,7 @@ items:
     date_src: github
     summary: "A chatbot that integrates with major e-commerce platforms."
     repo: "E-Commerce-Chatbot-AI"
+    url: /portfolio/e-commerce-chatbot-ai/
     lang: Python
   # ---------- Computer vision
   - title: "ADAS-L4 VinBEVFusion: bird's-eye-view segmentation with VinFast"
@@ -80,6 +82,7 @@ items:
     summary: "Redone feature analysis for D-LAPA depth injection."
     skills: [learning]
     repo: "D-LAPA-Feature-Analysis"
+    url: /portfolio/d-lapa-feature-analysis/
     lang: Python
   # ---------- Robotics and autonomous driving
   - title: "NeuroDrive-K: path planning for autonomous driving"
@@ -106,6 +109,7 @@ items:
     summary: "An ensemble pipeline (LightGBM, XGBoost, CatBoost with stacking) that predicts the probability a student passes; tuned for AUPRC with stratified 7-fold cross-validation."
     skills: [learning]
     repo: "EduCast-AI"
+    url: /portfolio/educast-ai/
     lang: Python
   # ---------- Web and apps
   - title: "Cloud Arena"
@@ -116,6 +120,7 @@ items:
     date_src: github
     summary: "A game server rental platform with modpack support and easy server management."
     repo: "Cloud-Arena"
+    url: /portfolio/cloud-arena/
     lang: PHP
   - title: "HCMUT Tutoring"
     area: web
@@ -125,6 +130,7 @@ items:
     date_src: github
     summary: "A system to run the university's tutor program, with a Django backend and a MongoDB database."
     repo: "HCMUT-TUTORING"
+    url: /portfolio/hcmut-tutoring/
     lang: Python
   - title: "Real-time stock monitoring"
     area: web
@@ -134,6 +140,7 @@ items:
     date_src: github
     summary: "An extension that tracks stock prices in real time and sends alerts on set conditions."
     repo: "Real-time-Stock-Monitoring-System"
+    url: /portfolio/real-time-stock-monitoring/
     lang: Java
   - title: "Oracle: dangerous-link checker"
     area: web
@@ -143,6 +150,7 @@ items:
     date_src: github
     summary: "A Chrome extension that checks whether a link is dangerous."
     repo: "oracle-project"
+    url: /portfolio/oracle-link-checker/
     lang: JavaScript
   # ---------- Systems and algorithms
   - title: "WeApRous"
@@ -153,6 +161,7 @@ items:
     date_src: github
     summary: "Network programming: the client–server and peer-to-peer paradigms built from the main components of a computer network."
     repo: "WeApRous"
+    url: /portfolio/weaprous/
     lang: Python
   - title: "Cutting stock heuristics"
     area: systems
@@ -162,6 +171,7 @@ items:
     date_src: github
     summary: "A cutting stock solver with improved First Fit Decreasing and Best Fit Decreasing, to use less material and cut waste."
     repo: "CSP-FitHeuristics"
+    url: /portfolio/csp-fit-heuristics/
     lang: Python
   - title: "Blockchain-integrated IoT system"
     area: systems
@@ -171,6 +181,7 @@ items:
     date_src: github
     summary: "An IoT platform that uses a blockchain to keep data intact and stop device forgery."
     repo: "Blockchain-integrated-IoT-System"
+    url: /portfolio/blockchain-iot/
     lang: Python
   - title: "Simple operating system"
     area: systems
@@ -180,4 +191,5 @@ items:
     date_src: github
     summary: "Operating system simulations in C."
     repo: "Simple-Operation-System"
+    url: /portfolio/simple-os/
     lang: C

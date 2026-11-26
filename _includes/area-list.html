@@ -28,15 +28,19 @@
         {% if it.start == it.end %}{% assign when = e | date: "%b %Y" %}
         {% elsif sy == ey %}{% assign sm = s | date: "%b" %}{% capture when %}{{ sm }} – {{ e | date: "%b %Y" }}{% endcapture %}
         {% else %}{% capture when %}{{ s | date: "%b %Y" }} – {{ e | date: "%b %Y" }}{% endcapture %}{% endif %}
+        {% comment %} 2026-11-26: a project page (collection portfolio) overrides the card text and image, so they are written once. {% endcomment %}
+        {% assign pg = nil %}{% if it.url %}{% assign pg = site.portfolio | where: "url", it.url | first %}{% endif %}
+        {% assign c_sum = pg.card_summary | default: it.summary %}{% assign c_res = pg.card_result | default: it.result %}
+        {% assign c_thumb = pg.teaser | default: it.thumb %}{% assign c_role = pg.role | default: it.role %}
         <li class="work__row" data-kind="{{ a.id }}">
           <span class="work__when">{{ when }}</span>
           <span class="work__type work__type--{% if it.kind == 'repo' %}project{% else %}{{ it.kind }}{% endif %}">{% case it.kind %}{% when 'paper' %}Paper{% when 'writing' %}Writing{% when 'repo' %}Repo{% else %}Project{% endcase %}</span>
           <div class="work__body">
-            {% if it.thumb %}<a class="areas__thumb" href="{{ base_path }}{{ it.url }}" tabindex="-1" aria-hidden="true"><img src="{{ base_path }}{{ it.thumb }}" alt="" width="960" height="480" loading="lazy" decoding="async"></a>{% endif %}
+            {% if c_thumb %}<a class="areas__thumb" href="{{ base_path }}{{ it.url }}" tabindex="-1" aria-hidden="true"><img src="{{ base_path }}{{ c_thumb }}" alt="" width="960" height="480" loading="lazy" decoding="async"></a>{% endif %}
             {% if it.url %}<a class="work__title" href="{{ base_path }}{{ it.url }}">{{ it.title }}</a>{% elsif it.repo %}<a class="work__title" href="{{ gh }}{{ it.repo }}">{{ it.title }}</a>{% else %}<span class="work__title">{{ it.title }}</span>{% endif %}
-            {% if it.role %}<p class="work__venue">{{ it.role }}</p>{% endif %}
-            <p class="work__summary">{{ it.summary }}</p>
-            {% if it.result %}<p class="areas__result">{{ it.result }}</p>{% endif %}
+            {% if c_role %}<p class="work__venue">{{ c_role }}</p>{% endif %}
+            <p class="work__summary">{{ c_sum }}</p>
+            {% if c_res %}<p class="areas__result">{{ c_res }}</p>{% endif %}
             {% if it.repo or it.url %}<p class="areas__links">
               {% if it.url %}<a href="{{ base_path }}{{ it.url }}">{% if it.kind == 'paper' %}Paper page{% elsif it.kind == 'writing' %}Read{% else %}Project page{% endif %}</a>{% endif %}
               {% if it.repo %}<a href="{{ gh }}{{ it.repo }}">Code on GitHub ↗</a>{% endif %}
