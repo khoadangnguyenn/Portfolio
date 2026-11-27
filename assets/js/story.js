@@ -9,7 +9,8 @@
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  // threshold 0: a block taller than about 6 screens never gets 15% of itself on screen, so it would stay hidden.
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
   els.forEach(function (el) { io.observe(el); });
 })();
 
