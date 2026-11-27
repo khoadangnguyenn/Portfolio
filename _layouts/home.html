@@ -31,7 +31,7 @@ layout: default
         <nav class="scene__nodes" aria-label="Sections">
           <a class="node" href="{{ base_path }}/publications/"><b>Publications</b><span>{% if latest_pub %}{{ latest_pub.title | split: ":" | first }} · {{ latest_pub.date | date: "%Y" }}{% endif %}</span></a>
           <a class="node" href="{{ base_path }}/portfolio/"><b>Portfolio</b><span>{{ site.portfolio | size }} projects</span></a>
-          <a class="node" href="{{ base_path }}/year-archive/"><b>Blog Posts</b><span>{% if latest_post %}{{ latest_post.title }}{% endif %}</span></a>
+          <a class="node" href="{{ base_path }}/year-archive/"><b>Blog</b><span>{% if latest_post %}{{ latest_post.title }}{% endif %}</span></a>
           <a class="node" href="{{ base_path }}/cv/"><b>CV</b><span>Education, experience, skills</span></a>
         </nav>
         <p class="scene__links">
@@ -56,7 +56,7 @@ layout: default
   <nav class="strip" aria-label="Sections">
     <a href="{{ base_path }}/publications/"><small>Publications</small>All papers</a>
     <a href="{{ base_path }}/portfolio/"><small>Portfolio</small>All projects</a>
-    <a href="{{ base_path }}/year-archive/"><small>Blog Posts</small>All posts</a>
+    <a href="{{ base_path }}/year-archive/"><small>Blog</small>All posts</a>
     <a href="{{ base_path }}/cv/"><small>CV</small>Full CV</a>
   </nav>
 </main>

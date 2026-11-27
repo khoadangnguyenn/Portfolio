@@ -7,8 +7,11 @@ main:
   - title: "Projects"
     url: /projects/
 
-  - title: "Blog Posts"
+  - title: "Blog"
     url: /year-archive/
+
+  - title: "News"
+    url: /news/
 
   - title: "CV"
     url: /files/NguyenDangKhoaCV.pdf

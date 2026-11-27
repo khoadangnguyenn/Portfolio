@@ -1,0 +1,20 @@
+---
+layout: page-resume
+title: "News"
+permalink: /news/
+author_profile: false
+---
+{% include base_path %}
+{% comment %} Updates about Khoa, newest first, from _data/news.yml. Blog posts live on /year-archive/. {% endcomment %}
+{% assign items = site.data.news | sort: "date" | reverse %}
+{% assign cur = "" %}
+{% for n in items %}
+  {% assign y = n.date | date: "%Y" %}
+  {% if y != cur %}
+    {% unless forloop.first %}</ol></section>{% endunless %}
+    <section class="rs-sec news-year" aria-labelledby="news-{{ y }}"><h2 id="news-{{ y }}" class="rs-h">{{ y }}</h2><ol class="rs-tl rs-tl--compact">
+    {% assign cur = y %}
+  {% endif %}
+  <li><time datetime="{{ n.date | date: '%Y-%m' }}">{% if n.month_only %}{{ n.date | date: "%b %Y" }}{% else %}{{ n.date | date: "%-d %b %Y" }}{% endif %}</time><div>{{ n.text | markdownify | remove: "<p>" | remove: "</p>" }}</div></li>
+  {% if forloop.last %}</ol></section>{% endif %}
+{% endfor %}

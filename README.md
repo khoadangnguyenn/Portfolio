@@ -22,9 +22,11 @@ Experience, education, skills and honors on the homepage come from `_data/resume
 
 The projects page (`/projects/`, `_pages/projects.md`, rendered by `_includes/area-list.html`) is built from `_data/projects.yml`. The `areas` list defines the groups and their filter buttons; each entry in `items` gives an `area`, `kind` (`repo` or `project`), `start` and `end` months, `summary`, optional `result`, `url` and `thumb`. Inside an area, items sort by `end`, newest first. The `skills` keys on an item must match `key` values in `_data/resume.yml`, which is how the homepage Skills list links to projects.
 
-Publications are files in `_publications/`. The front matter carries `venue`, `authors_short`, `abstract`, `citation` and `skills`; `_publications/2026-07-27-mars.md` is the model to copy. Longer write-ups are in `_portfolio/` (they have pages but are no longer in the top menu, which in `_data/navigation.yml` has Publications, Projects, Blog Posts and CV). Blog posts go in `_posts/`; set `math: true` in a post's front matter to load MathJax.
+Publications are files in `_publications/`. The front matter carries `venue`, `authors_short`, `abstract`, `citation` and `skills`; `_publications/2026-07-27-mars.md` is the model to copy. Longer write-ups are in `_portfolio/` (they have pages but are no longer in the top menu, which in `_data/navigation.yml` has Publications, Projects, Blog, News and CV). Blog posts go in `_posts/`; set `math: true` in a post's front matter to load MathJax.
 
-The previous homepage (`layout: home`, `_layouts/home.html`) is kept as a fallback. It shows a dated news list from `_data/news.yml`; the current homepage does not use that file.
+The News page (`/news/`, `_pages/news.html`) lists short updates about Khoa from `_data/news.yml`, newest first and grouped by year. Each item has a `date`, `month_only: true` when only the month is known, and a `text` in Markdown, so it can link to a paper or project page. Add an item only when the fact is already on the CV or the site.
+
+The previous homepage (`layout: home`, `_layouts/home.html`) is kept as a fallback. It also shows the items in `_data/news.yml`.
 
 ## What is custom
 
