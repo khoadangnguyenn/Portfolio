@@ -1,0 +1,38 @@
+---
+layout: default
+---
+{% include base_path %}
+{% comment %}
+  One news item as a short post (2026-11-27). Same page design as blog posts (Distill style, _layouts/post.html):
+  title, one byline row split by thin vertical rules, text column of about 65 characters, photos under the text.
+  Front matter: title, date, month_only, summary (one line, shown on /news/), thumb (optional card picture),
+  images (list of src + alt), source_url + source_label (original post, e.g. LinkedIn). Body = the post text.
+{% endcomment %}
+<main id="home" class="resume rs-projects dpost" role="main">
+  <header class="rs-head rs-head--page dpost__head">
+    <div class="rs-wrap">
+      <h1 class="rs-name dpost__title">{% include t.html s=page.title %}</h1>
+      <dl class="dpost__by">
+        <div><dt>{% include t.html s="Section" %}</dt><dd><a href="{{ base_path }}/news/">{% include t.html s="News" %}</a></dd></div>
+        <div><dt>{% include t.html s="Date" %}</dt><dd><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{% include tdate.html d=page.date m=page.month_only long=true %}</time></dd></div>
+      </dl>
+    </div>
+  </header>
+  <div class="rs-wrap dpost__wrap">
+    <article class="dpost__body">
+      {% include tc.html html=content %}
+      {% if page.images %}
+      <div class="news-post__photos{% if page.images.size == 1 %} is-single{% endif %}">
+        {% for im in page.images %}
+        <a class="js-zoom" href="{{ base_path }}{{ im.src }}" data-caption="{{ im.alt | escape }}" data-alt="{{ im.alt | escape }}"><img src="{{ base_path }}{{ im.src }}" alt="{{ im.alt | escape }}" loading="lazy"></a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </article>
+    <p class="dpost__foot">
+      {% if page.source_url %}<a class="news-post__src" href="{{ page.source_url }}" rel="noopener">{% include icon.html name="linkedin" %} {% if page.source_label %}{{ page.source_label }}{% else %}{% include t.html s="Original post" %}{% endif %}</a> {% endif %}
+      <a href="{{ base_path }}/news/">{% include t.html s="← All news" %}</a>
+    </p>
+  </div>
+</main>
+<script defer src="{{ base_path }}/assets/js/story.js"></script>

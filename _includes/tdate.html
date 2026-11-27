@@ -1,0 +1,11 @@
+{%- comment -%}
+  A date in three languages (2026-11-27). Params: d = date, m = month only (true/false), long = full month name (true/false).
+  English "18 Aug 2026" / "18 August 2026"; Vietnamese "18/08/2026" / "18 tháng 8 năm 2026" (the form used on the certificates);
+  Japanese "2026年8月18日". Month only: "Oct 2026" / "10/2026" / "2026年10月".
+{%- endcomment -%}
+{%- assign _y = include.d | date: "%Y" -%}{%- assign _mn = include.d | date: "%-m" -%}{%- assign _m2 = include.d | date: "%m" -%}{%- assign _dn = include.d | date: "%-d" -%}{%- assign _d2 = include.d | date: "%d" -%}
+{%- if include.m -%}
+<span class="t has-vi has-ja" lang="en">{% if include.long %}{{ include.d | date: "%B %Y" }}{% else %}{{ include.d | date: "%b %Y" }}{% endif %}</span><span class="t" lang="vi">{% if include.long %}tháng {{ _mn }} năm {{ _y }}{% else %}{{ _m2 }}/{{ _y }}{% endif %}</span><span class="t" lang="ja">{{ _y }}年{{ _mn }}月</span>
+{%- else -%}
+<span class="t has-vi has-ja" lang="en">{% if include.long %}{{ include.d | date: "%-d %B %Y" }}{% else %}{{ include.d | date: "%-d %b %Y" }}{% endif %}</span><span class="t" lang="vi">{% if include.long %}{{ _dn }} tháng {{ _mn }} năm {{ _y }}{% else %}{{ _d2 }}/{{ _m2 }}/{{ _y }}{% endif %}</span><span class="t" lang="ja">{{ _y }}年{{ _mn }}月{{ _dn }}日</span>
+{%- endif -%}

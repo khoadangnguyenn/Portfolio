@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% include base_path %}
+{% comment %}
+  Blog post page (2026-11-27), modelled on Distill articles (distill.pub, e.g. "Why Momentum Really Works", 2017):
+  large title, one byline row split by thin vertical rules (author, date, reading time, topics), text in a column of
+  about 65 characters, and figures allowed to run wider than the text.
+{% endcomment %}
+{% comment %} Reading time counts the English text only (the other two languages follow <!--lang:vi-->). {% endcomment %}
+{% assign words = content | split: "<!--lang:vi-->" | first | strip_html | number_of_words %}
+{% assign mins = words | divided_by: 200 | at_least: 1 %}
+<main id="home" class="resume rs-projects dpost" role="main">
+  <header class="rs-head rs-head--page dpost__head">
+    <div class="rs-wrap">
+      <h1 class="rs-name dpost__title">{% include t.html s=page.title %}</h1>
+      {% if page.excerpt %}{% assign _dek = page.excerpt | strip_html | strip %}<p class="dpost__dek">{% include t.html s=_dek %}</p>{% endif %}
+      <dl class="dpost__by">
+        <div><dt>{% include t.html s="Author" %}</dt><dd>{% include t.html s=site.author.name %}</dd></div>
+        <div><dt>{% include t.html s="Published" %}</dt><dd><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{% include tdate.html d=page.date long=true %}</time></dd></div>
+        <div><dt>{% include t.html s="Reading time" %}</dt><dd><span class="t has-vi has-ja" lang="en">{{ mins }} min</span><span class="t" lang="vi">{{ mins }} phút</span><span class="t" lang="ja">{{ mins }}分</span></dd></div>
+        {% if page.tags.size > 0 %}<div><dt>{% include t.html s="Topics" %}</dt><dd>{% for tg in page.tags %}{% include t.html s=tg %}{% unless forloop.last %} · {% endunless %}{% endfor %}</dd></div>{% endif %}
+      </dl>
+    </div>
+  </header>
+  <div class="rs-wrap dpost__wrap">
+    <article class="dpost__body">
+      {% include tc.html html=content %}
+    </article>
+    <p class="dpost__foot"><a href="{{ base_path }}/year-archive/">{% include t.html s="← All posts" %}</a></p>
+  </div>
+</main>

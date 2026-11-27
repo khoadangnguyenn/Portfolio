@@ -5,16 +5,23 @@ permalink: /news/
 author_profile: false
 ---
 {% include base_path %}
-{% comment %} Updates about Khoa, newest first, from _data/news.yml. Blog posts live on /year-archive/. {% endcomment %}
-{% assign items = site.data.news | sort: "date" | reverse %}
+{% comment %}
+  Updates about Khoa, newest first, from the _news collection (2026-11-27).
+  Every item is a short post with its own page, shown as a card that opens it (_includes/post-card.html).
+  A picture is shown when the item has one. (2026-11-27: the one-line variant was dropped at the user's request.)
+{% endcomment %}
+{% assign items = site.news | sort: "date" | reverse %}
 {% assign cur = "" %}
 {% for n in items %}
   {% assign y = n.date | date: "%Y" %}
   {% if y != cur %}
-    {% unless forloop.first %}</ol></section>{% endunless %}
-    <section class="rs-sec news-year" aria-labelledby="news-{{ y }}"><h2 id="news-{{ y }}" class="rs-h">{{ y }}</h2><ol class="rs-tl rs-tl--compact">
+    {% unless forloop.first %}</div></section>{% endunless %}
+    <section class="rs-sec" aria-labelledby="news-{{ y }}"><h2 id="news-{{ y }}" class="rs-h">{{ y }}</h2><div class="pc-list">
     {% assign cur = y %}
   {% endif %}
-  <li><time datetime="{{ n.date | date: '%Y-%m' }}">{% if n.month_only %}{{ n.date | date: "%b %Y" }}{% else %}{{ n.date | date: "%-d %b %Y" }}{% endif %}</time><div>{{ n.text | markdownify | remove: "<p>" | remove: "</p>" }}</div></li>
-  {% if forloop.last %}</ol></section>{% endif %}
+  {% assign photo = n.images | first %}
+  {% assign thumb = n.thumb | default: photo.src %}
+  {% capture ttl %}{% include t.html s=n.title %}{% endcapture %}{% capture ex %}{% include t.html s=n.summary %}{% endcapture %}
+  {% include post-card.html url=n.url title=ttl date=n.date month_only=n.month_only excerpt=ex img=thumb datecol=true %}
+  {% if forloop.last %}</div></section>{% endif %}
 {% endfor %}

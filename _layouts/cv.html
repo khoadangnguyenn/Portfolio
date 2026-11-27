@@ -1,0 +1,74 @@
+---
+layout: default
+---
+{% include base_path %}
+{% comment %}
+  CV page, web version of the CV PDF (files/NguyenDangKhoaCV.pdf, 2026-11-08), chosen by the user on 2026-11-27.
+  Layout follows that PDF and Butterick, Practical Typography, "Résumés" (the "after" sample): small capital section
+  labels over a thin rule; organisation in bold on the left, dates on the right; role in italics on the left, place or GPA
+  in italics on the right; plain bullets. No boxes, shadows or colour badges ("headings and gray boxes are too large
+  relative to body text" is the first fault Butterick lists in the "before" sample).
+  Data: _data/resume.yml (shared with the homepage) and the publications collection.
+{% endcomment %}
+{% assign r = site.data.resume %}
+{% assign pubs = site.publications | sort: "date" | reverse %}
+<main id="home" class="resume rs-projects cvx" role="main">
+  <header class="rs-head rs-head--page">
+    <div class="rs-wrap cvx__head">
+      <h1 class="rs-name">{{ page.title }}</h1>
+      <div class="cvx__pdfs">
+        <a class="cvx__pdf" href="{{ base_path }}/files/NguyenDangKhoaCV.pdf" aria-label="Download the CV in English (PDF)"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i><span>English</span></a>
+        <a class="cvx__pdf" href="{{ base_path }}/files/NguyenDangKhoaCV_JP.pdf" lang="ja" aria-label="履歴書を日本語でダウンロード (PDF)"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i><span>日本語</span></a>
+      </div>
+    </div>
+  </header>
+  <div class="rs-wrap cvx__body">
+    <section aria-labelledby="cv-edu">
+      <h2 id="cv-edu" class="cvx__h">{% include t.html s="Education" %}</h2>
+      {% for e in r.education %}
+      <div class="cvx__entry">
+        <div class="cvx__line"><b>{% include t.html s=e.org %}</b><span class="cvx__when">{% include t.html s=e.when %}</span></div>
+        <div class="cvx__line cvx__sub"><i>{% include t.html s=e.title %}</i>{% if e.aside %}<i>{% include t.html s=e.aside %}</i>{% endif %}</div>
+        {% for s in r.skills %}{% if s.items %}<ul><li><b>{% include t.html s=s.label %}{% include t.html s=": " %}</b>{% for x in s.items %}{% include t.html s=x %}{% unless forloop.last %}{% include t.html s=", " %}{% endunless %}{% endfor %}</li></ul>{% endif %}{% endfor %}
+      </div>
+      {% endfor %}
+    </section>
+
+    <section aria-labelledby="cv-exp">
+      <h2 id="cv-exp" class="cvx__h">{% include t.html s="Experience" %}</h2>
+      {% for e in r.experience %}
+      <div class="cvx__entry">
+        <div class="cvx__line"><b>{% include t.html s=e.org %}</b><span class="cvx__when">{% include t.html s=e.when %}</span></div>
+        <div class="cvx__line cvx__sub"><i>{% include t.html s=e.title %}{% if e.note %}{% include t.html s=". " %}{% include t.html s=e.note %}{% endif %}</i>{% if e.aside %}<i>{% include t.html s=e.aside %}</i>{% endif %}</div>
+        {% if e.points %}<ul>{% for p in e.points %}<li>{% include t.html s=p %}</li>{% endfor %}</ul>{% endif %}
+      </div>
+      {% endfor %}
+    </section>
+
+    {% if pubs.size > 0 %}
+    <section aria-labelledby="cv-pub">
+      <h2 id="cv-pub" class="cvx__h">{% include t.html s="Publications" %}</h2>
+      {% for p in pubs %}
+      <div class="cvx__entry">
+        <div class="cvx__line"><a class="cvx__title" href="{{ base_path }}{{ p.url }}">{{ p.title }}</a><span class="cvx__when">{{ p.date | date: "%Y" }}</span></div>
+        {% if p.authors_short %}<p class="cvx__authors">{{ p.authors_short }}</p>{% endif %}
+        {% if p.venue %}<p class="cvx__venue"><i>{{ p.venue }}</i></p>{% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <section aria-labelledby="cv-skills">
+      <h2 id="cv-skills" class="cvx__h">{% include t.html s="Skills" %}</h2>
+      <ul class="cvx__flat">{% for s in r.skills %}{% unless s.items %}<li><b>{% include t.html s=s.label %}{% include t.html s=": " %}</b>{% include t.html s=s.text %}</li>{% endunless %}{% endfor %}</ul>
+    </section>
+
+    <section aria-labelledby="cv-hon">
+      <h2 id="cv-hon" class="cvx__h">{% include t.html s="Honors and awards" %}</h2>
+      {% for h in r.honors %}
+      <div class="cvx__line cvx__honor">{% if h.proof %}<a class="rs-proof" href="{{ base_path }}{{ h.proof }}" data-caption="{{ h.text | escape }}"><b>{% include t.html s=h.text %}</b>{% include icon.html name="image" %}<span class="visually-hidden"> {% include t.html s="(view certificate)" %}</span></a>{% else %}<b>{% include t.html s=h.text %}</b>{% endif %}<span class="cvx__when">{{ h.when }}</span></div>
+      {% endfor %}
+    </section>
+  </div>
+</main>
+<script defer src="{{ base_path }}/assets/js/story.js"></script>

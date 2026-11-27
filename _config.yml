@@ -28,7 +28,7 @@ author:
   avatar_hover     : true   # custom: point cloud of the same photo assembles into the face (assets/js/face-cloud.js)
   name             : "Nguyen Dang Khoa"
   pronouns         : # example: "she/her"  
-  bio              : "AI Engineer (R&D) at Hypmotion · Student researcher, URA group, HCMUT"
+  bio              : "AI Engineer (R&D) at Hypmotion · Student researcher, URA group, VNPT Lab"
   location         : "Ho Chi Minh City, Vietnam"
   employer         : "Hypmotion, HCMUT"
   uri              : # URL
@@ -66,7 +66,7 @@ author:
   goodreads        : # Username
   google_plus      : # Username
   keybase          : # Username
-  instagram        : # Username
+  instagram        : "khoadangnguyenn"   # 2026-11-27, user
   lastfm           : # Username
   linkedin         : "khoadangnguyenn"
   mastodon         : # URL
@@ -240,6 +240,9 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  news:   # 2026-11-27: each news item is a post with its own page (/news/<file>/), listed on /news/
+    output: true
+    permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
@@ -254,7 +257,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: single
+      layout: post   # 2026-11-27: Distill-style post page (_layouts/post.html); was the template's single
       author_profile: false
       read_time: true
       comments: true
@@ -294,6 +297,14 @@ defaults:
       author_profile: false
       share: false   # 2026-11-26: template share buttons removed
       comment: true
+  # _news
+  - scope:
+      path: ""
+      type: news
+    values:
+      layout: news-post
+      author_profile: false
+      sitemap: true
   # _talks
   - scope:
       path: ""

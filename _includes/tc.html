@@ -1,0 +1,10 @@
+{%- comment -%}
+  Long text in three languages (2026-11-27). Param: html = text that is already rendered (usually {{ content }}).
+  The page writes English first, then <!--lang:vi--> and the Vietnamese text, then <!--lang:ja--> and the Japanese text.
+  A page without the markers is printed as it is (English only).
+{%- endcomment -%}
+{%- assign _a = include.html | split: "<!--lang:vi-->" -%}
+{%- if _a.size > 1 -%}
+{%- assign _b = _a[1] | split: "<!--lang:ja-->" -%}
+<div class="t has-vi has-ja" lang="en">{{ _a[0] }}</div><div class="t" lang="vi">{{ _b[0] }}</div><div class="t" lang="ja">{{ _b[1] }}</div>
+{%- else -%}{{ include.html }}{%- endif -%}

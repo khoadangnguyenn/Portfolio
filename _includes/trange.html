@@ -1,0 +1,14 @@
+{%- comment -%}
+  A month range in three languages (2026-11-27), used by the project list. Params: start, end as "YYYY-MM".
+  Same month: "Mar 2026". Same year: "Mar – Jul 2026". Otherwise "Nov 2025 – Mar 2026".
+  Vietnamese "03 – 07/2026"; Japanese "2026年3月 – 7月".
+{%- endcomment -%}
+{%- assign _s = include.start | append: "-01" -%}{%- assign _e = include.end | append: "-01" -%}
+{%- assign _sy = _s | date: "%Y" -%}{%- assign _ey = _e | date: "%Y" -%}{%- assign _sm = _s | date: "%-m" -%}{%- assign _em = _e | date: "%-m" -%}{%- assign _sm2 = _s | date: "%m" -%}{%- assign _em2 = _e | date: "%m" -%}
+{%- if include.start == include.end -%}
+<span class="t has-vi has-ja" lang="en">{{ _e | date: "%b %Y" }}</span><span class="t" lang="vi">{{ _em2 }}/{{ _ey }}</span><span class="t" lang="ja">{{ _ey }}年{{ _em }}月</span>
+{%- elsif _sy == _ey -%}
+<span class="t has-vi has-ja" lang="en">{{ _s | date: "%b" }} – {{ _e | date: "%b %Y" }}</span><span class="t" lang="vi">{{ _sm2 }} – {{ _em2 }}/{{ _ey }}</span><span class="t" lang="ja">{{ _sy }}年{{ _sm }}月 – {{ _em }}月</span>
+{%- else -%}
+<span class="t has-vi has-ja" lang="en">{{ _s | date: "%b %Y" }} – {{ _e | date: "%b %Y" }}</span><span class="t" lang="vi">{{ _sm2 }}/{{ _sy }} – {{ _em2 }}/{{ _ey }}</span><span class="t" lang="ja">{{ _sy }}年{{ _sm }}月 – {{ _ey }}年{{ _em }}月</span>
+{%- endif -%}

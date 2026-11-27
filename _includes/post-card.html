@@ -1,0 +1,19 @@
+{% comment %}
+  One post in a list (Blog and News, 2026-11-27). Params: url, title, date (Time), month_only, datecol (date in its own left column, as on /news/),
+  thumbleft (square picture on the left, as on jonbarron.info: 160 px, used on /year-archive/ since 2026-11-27), meta (extra text after the date),
+  excerpt (HTML or text), img, img_alt.
+  Layout follows Lilian Weng's blog (lilianweng.github.io, Hugo PaperMod): bold title, two-line excerpt, one meta line;
+  the meta line sits above the title as on anthropic.com/news (type + date first); picture on the right as on Distill.
+  The whole card is one link target (Heydon Pickering, Inclusive Components, "Cards", 2017).
+{% endcomment %}
+{% comment %} 2026-11-27: title, excerpt and meta come in as HTML, so a caller can pass three-language text (_includes/t.html); the date is made here. {% endcomment %}
+{% capture d %}{% include tdate.html d=include.date m=include.month_only %}{% endcapture %}
+<article class="pc{% if include.img %} pc--img{% endif %}{% if include.datecol %} pc--datecol{% endif %}{% if include.thumbleft %} pc--thumbleft{% endif %}">
+  {% if include.datecol %}<time class="pc__date" datetime="{{ include.date | date: '%Y-%m-%d' }}">{{ d }}</time>{% endif %}
+  <div class="pc__text">
+    {% unless include.datecol %}<p class="pc__meta"><time datetime="{{ include.date | date: '%Y-%m-%d' }}">{{ d }}</time>{% if include.meta %}<span aria-hidden="true"> · </span>{{ include.meta }}{% endif %}</p>{% endunless %}
+    <h3 class="pc__title"><a href="{{ base_path }}{{ include.url }}">{{ include.title }}</a></h3>
+    {% if include.excerpt %}<p class="pc__excerpt">{{ include.excerpt }}</p>{% endif %}
+  </div>
+  {% if include.img %}<img class="pc__img" src="{{ base_path }}{{ include.img }}" alt="" loading="lazy">{% endif %}
+</article>

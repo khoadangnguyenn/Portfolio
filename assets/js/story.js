@@ -42,9 +42,9 @@
 })();
 
 
-// Honors: a link with class rs-proof opens its certificate image in a dialog (2026-11-26). Without JS the link opens the image.
+// Honors (a.rs-proof) and news photos (a.js-zoom) open their image in a dialog (2026-11-26, news 2026-11-27). Without JS the link opens the image.
 (function () {
-  var links = document.querySelectorAll('a.rs-proof');
+  var links = document.querySelectorAll('a.rs-proof, a.js-zoom');
   if (!links.length || typeof HTMLDialogElement === 'undefined') return;
   var dlg = document.createElement('dialog'); dlg.className = 'rs-lightbox';
   dlg.innerHTML = '<img alt=""><p><span></span><button type="button">Close</button></p>';
@@ -54,7 +54,11 @@
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   links.forEach(function (a) {
     a.addEventListener('click', function (e) {
-      e.preventDefault(); img.src = a.href; img.alt = 'Certificate: ' + a.dataset.caption; cap.textContent = a.dataset.caption; dlg.showModal();
+      e.preventDefault();
+      // 2026-11-27: caption in the chosen language when the link holds a translated text (.t[lang]), else the English data-caption
+      var lg = document.documentElement.getAttribute('data-lang'), tr = lg && lg !== 'en' ? a.querySelector('.t[lang="' + lg + '"]') : null;
+      var text = tr ? tr.textContent : a.dataset.caption;
+      img.src = a.href; img.alt = a.dataset.alt || ('Certificate: ' + a.dataset.caption); cap.textContent = text; dlg.showModal();
     });
   });
 })();

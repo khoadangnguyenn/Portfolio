@@ -67,7 +67,7 @@ items:
     start: "2026-01"
     end: "2026-10"
     date_src: cv
-    role: "Technical lead, 5 people · URA group, HCMUT"
+    role: "Technical lead, 5 people · URA group, VNPT Lab"
     summary: "Lane and free-space detection, and multi-modal BEVFusion trained for bird's-eye-view segmentation on Vietnamese driving data. Found that wrong heading in the labels, not the model, caused a broken map."
     result: "74.2% mIoU and 89.4% drivable-area IoU."
     skills: [learning]

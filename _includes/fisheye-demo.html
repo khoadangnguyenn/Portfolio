@@ -1,10 +1,12 @@
 {% comment %} Interactive figure for the fisheye post (motion pick 2026-11-25). Drawing code: assets/js/motion.js.
-  Without JS the canvases stay empty and the static figure above still explains the point. {% endcomment %}
+  Without JS the canvases stay empty and the static figure above still explains the point.
+  2026-11-27: texts go through t.html; the post includes this figure once per language block (uid="en", "vi", "ja"), so every id carries the uid. {% endcomment %}
+{% assign _u = include.uid | default: "en" %}
 <figure class="fe-demo">
   <div class="fe-demo__grid">
-    <figure><canvas data-model="pinhole" width="640" height="640" aria-hidden="true"></canvas><figcaption>Pinhole, r = f tan θ</figcaption></figure>
-    <figure><canvas data-model="equidistant" width="640" height="640" aria-hidden="true"></canvas><figcaption>Equidistant, r = f θ</figcaption></figure>
+    <figure><canvas data-model="pinhole" width="640" height="640" aria-hidden="true"></canvas><figcaption>{% include t.html s="Pinhole, r = f tan θ" %}</figcaption></figure>
+    <figure><canvas data-model="equidistant" width="640" height="640" aria-hidden="true"></canvas><figcaption>{% include t.html s="Equidistant, r = f θ" %}</figcaption></figure>
   </div>
-  <div class="fe-demo__ctl"><label for="fe-fov">Field of view</label><input id="fe-fov" type="range" min="40" max="200" step="2" value="120"><output for="fe-fov">120°</output></div>
-  <figcaption class="fe-demo__note">A square grid on a wall in front of the camera, imaged by both models so that the edge of the view lands on the same circle. Drag the field of view: the pinhole image pushes the grid out to the rim and has no image at all from 180°; the equidistant image keeps going.</figcaption>
+  <div class="fe-demo__ctl"><label for="fe-fov-{{ _u }}">{% include t.html s="Field of view" %}</label><input id="fe-fov-{{ _u }}" type="range" min="40" max="200" step="2" value="120"><output for="fe-fov-{{ _u }}">120°</output></div>
+  <figcaption class="fe-demo__note">{% include t.html s="A square grid on a wall in front of the camera, imaged by both models so that the edge of the view lands on the same circle. Drag the field of view: the pinhole image pushes the grid out to the rim and has no image at all from 180°; the equidistant image keeps going." %}</figcaption>
 </figure>

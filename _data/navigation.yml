@@ -14,4 +14,4 @@ main:
     url: /news/
 
   - title: "CV"
-    url: /files/NguyenDangKhoaCV.pdf
+    url: /cv/   # 2026-11-27: CV page like al-folio's; the PDF is linked from its top right

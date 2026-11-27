@@ -6,7 +6,11 @@
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
           <li class="masthead__menu-item masthead__menu-item--lg persist {% if page.url == '/' or page.url == '/index.html' %}selected{% endif %}">
-            <a href="{{ base_path }}/">{{ site.title }}</a>
+            <a href="{{ base_path }}/">{% include t.html s=site.title %}</a>
+          </li>
+          {% comment %} Language switch (2026-11-27, user): a three-position slide switch, VI · EN · 日本語, EN in the middle and the default. Links, not buttons: the greedy-nav script treats every <button> in #site-nav as the menu toggle. Radio-group roles and arrow keys follow the W3C WAI-ARIA Authoring Practices "Radio Group" pattern (see assets/js/lang.js). {% endcomment %}
+          <li class="masthead__menu-item persist lang-switch">
+            <div class="lang-track" role="radiogroup" aria-label="Language / Ngôn ngữ / 言語"><span class="lang-thumb" aria-hidden="true"></span><a href="?lang=vi" role="radio" data-lang="vi" lang="vi" aria-checked="false" title="Tiếng Việt">VI</a><a href="?lang=en" role="radio" data-lang="en" lang="en" aria-checked="true" title="English">EN</a><a href="?lang=ja" role="radio" data-lang="ja" lang="ja" aria-checked="false" title="日本語">日本語</a></div>
           </li>
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
@@ -15,7 +19,7 @@
               {% assign domain = base_path %}
             {% endif %}
             <li class="masthead__menu-item {% if page.url contains link.url and link.url != '/' %}selected{% endif %}">
-              <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+              <a href="{{ domain }}{{ link.url }}">{% include t.html s=link.title %}</a>
             </li>
           {% endfor %}
           <li id="theme-toggle" class="masthead__menu-item persist tail">

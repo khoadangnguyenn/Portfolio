@@ -24,9 +24,11 @@ The projects page (`/projects/`, `_pages/projects.md`, rendered by `_includes/ar
 
 Publications are files in `_publications/`. The front matter carries `venue`, `authors_short`, `abstract`, `citation` and `skills`; `_publications/2026-07-27-mars.md` is the model to copy. Longer write-ups are in `_portfolio/` (they have pages but are no longer in the top menu, which in `_data/navigation.yml` has Publications, Projects, Blog, News and CV). Blog posts go in `_posts/`; set `math: true` in a post's front matter to load MathJax.
 
-The News page (`/news/`, `_pages/news.html`) lists short updates about Khoa from `_data/news.yml`, newest first and grouped by year. Each item has a `date`, `month_only: true` when only the month is known, and a `text` in Markdown, so it can link to a paper or project page. Add an item only when the fact is already on the CV or the site.
+The News page (`/news/`, `_pages/news.html`) lists short updates about Khoa, newest first and grouped by year. Each update is one file in `_news/` and gets its own page (`/news/<file name>/`, layout `_layouts/news-post.html`), like a short post. Front matter: `title`, `date`, `month_only: true` when only the month is known, `summary` (one line in Markdown, shown on the list), optional `images` (list of `src` + `alt`, photos in `images/news/`) and optional `source_url` + `source_label` for the original post (for example on LinkedIn). The body is the full post text. Add an item only when the fact is already on the CV or the site.
 
-The previous homepage (`layout: home`, `_layouts/home.html`) is kept as a fallback. It also shows the items in `_data/news.yml`.
+The site has three languages: Vietnamese, English (the default) and Japanese. The switch is the VI · EN · 日本語 group in the top bar. It runs in the browser: `_includes/head/custom.html` sets `<html data-lang>` before the first paint from `localStorage` (or from `?lang=vi|en|ja` in the link), and `assets/js/lang.js` handles the buttons. Short strings go through `_includes/t.html`: the English text is the key into `_data/i18n.yml`, which holds `[Vietnamese, Japanese]`; a string with no entry stays English. Dates use `tdate.html` and `trange.html`. Long text (the About paragraphs, each news post) is written in one file in three blocks, separated by `<!--lang:vi-->` and `<!--lang:ja-->`, and printed by `tc.html`. Pages not yet translated (the project pages in `_portfolio/` and the blog posts) stay in English in every language.
+
+The previous homepage (`layout: home`, `_layouts/home.html`) is kept as a fallback. It also shows the items in `_news/`.
 
 ## What is custom
 

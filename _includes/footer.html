@@ -3,15 +3,16 @@
    icon-only social links as on maggieappleton.com and brittanychiang.com. No update date (user request). {% endcomment %}
 <div class="site-foot">
   <div class="site-foot__who">
-    <b>{{ site.author.name }}</b>
+    <b>{% include t.html s=site.author.name %}</b>
   </div>
   <div class="site-foot__end">
     <nav class="site-foot__icons" aria-label="Elsewhere">
-      {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}" aria-label="GitHub" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>{% endif %}
-      {% if site.author.linkedin %}<a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>{% endif %}
-      {% if site.author.email %}<a href="mailto:{{ site.author.email }}" aria-label="Email" title="{{ site.author.email }}"><i class="fas fa-envelope" aria-hidden="true"></i></a>{% endif %}
+      {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}" aria-label="GitHub" title="GitHub">{% include icon.html name="github" %}</a>{% endif %}
+      {% if site.author.linkedin %}<a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn" title="LinkedIn">{% include icon.html name="linkedin" %}</a>{% endif %}
+      {% if site.author.instagram %}<a href="https://www.instagram.com/{{ site.author.instagram }}/" aria-label="Instagram" title="Instagram">{% include icon.html name="instagram" %}</a>{% endif %}
+      {% if site.author.email %}<a href="mailto:{{ site.author.email }}" aria-label="Email" title="{{ site.author.email }}">{% include icon.html name="mail" %}</a>{% endif %}
     </nav>
-    <a class="site-foot__top" href="#">Back to top ↑</a>
+    <a class="site-foot__top" href="#">{% include t.html s="Back to top ↑" %}</a>
   </div>
 </div>
 <p class="site-foot__copy">© {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</p>

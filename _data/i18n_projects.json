@@ -1,0 +1,618 @@
+{
+ "Jan – Oct 2026": [
+  "01 – 10/2026",
+  "2026年1月 – 10月"
+ ],
+ "Jan – May 2026": [
+  "01 – 05/2026",
+  "2026年1月 – 5月"
+ ],
+ "Mar – Jul 2026": [
+  "03 – 07/2026",
+  "2026年3月 – 7月"
+ ],
+ "Aug 2025": [
+  "08/2025",
+  "2025年8月"
+ ],
+ "May 2026": [
+  "05/2026",
+  "2026年5月"
+ ],
+ "Nov 2025": [
+  "11/2025",
+  "2025年11月"
+ ],
+ "Jun 2026": [
+  "06/2026",
+  "2026年6月"
+ ],
+ "Mar 2026": [
+  "03/2026",
+  "2026年3月"
+ ],
+ "2026": [
+  "2026",
+  "2026年"
+ ],
+ "Nov – Dec 2025": [
+  "11 – 12/2025",
+  "2025年11月 – 12月"
+ ],
+ "Apr – Dec 2024": [
+  "04 – 12/2024",
+  "2024年4月 – 12月"
+ ],
+ "May 2025": [
+  "05/2025",
+  "2025年5月"
+ ],
+ "Apr – May 2025": [
+  "04 – 05/2025",
+  "2025年4月 – 5月"
+ ],
+ "Nov 2025 – Mar 2026": [
+  "11/2025 – 03/2026",
+  "2025年11月 – 2026年3月"
+ ],
+ "Oracle (V-link)": [
+  "Oracle (V-link)",
+  "Oracle (V-link)"
+ ],
+ "Is it the model or the pose? Debugging a bird's-eye-view map": [
+  "Lỗi ở mô hình hay ở tư thế xe? Gỡ lỗi bản đồ góc nhìn từ trên xuống",
+  "原因はモデルか、姿勢か？ 鳥瞰図マップのデバッグ"
+ ],
+ "Debugging a bird's-eye-view road map on Vietnamese driving data: the labels' heading held mean IoU near 0.40, and the model was fine.": [
+  "Gỡ lỗi bản đồ đường góc nhìn từ trên xuống trên dữ liệu lái xe ở Việt Nam: chính hướng xe ghi trong nhãn đã giữ mean IoU ở quanh 0,40, còn mô hình không có lỗi.",
+  "ベトナムの走行データで作る鳥瞰図の道路マップをデバッグ。平均IoUを0.40前後に抑えていたのはラベルの向きで、モデルに問題はありませんでした。"
+ ],
+ "URA group, VNPT Lab × VinFast": [
+  "Nhóm URA, VNPT Lab × VinFast",
+  "VNPT LabのURAグループ× VinFast"
+ ],
+ "The same drive with yaw from the direction of motion (left) and from the inertial heading (right).": [
+  "Cùng một đoạn lái, với yaw lấy theo hướng chuyển động (trái) và theo hướng của hệ quán tính (phải).",
+  "同じ走行で、ヨー角を進行方向から求めた場合（左）と慣性航法の向きから求めた場合（右）。"
+ ],
+ "74.2% mIoU and 89.4% drivable-area IoU for BEVFusion trained on Vietnamese driving data.": [
+  "BEVFusion huấn luyện trên dữ liệu lái xe ở Việt Nam đạt mIoU 74,2% và IoU vùng xe đi được 89,4%.",
+  "ベトナムの走行データで学習したBEVFusionで、mIoU 74.2%、走行可能領域のIoU 89.4%。"
+ ],
+ "Mean IoU rose from about 0.40 to about 0.74 on the same validation frames after the label heading was corrected.": [
+  "Sau khi sửa hướng xe trong nhãn, mean IoU trên cùng các khung hình kiểm định tăng từ khoảng 0,40 lên khoảng 0,74.",
+  "ラベルの向きを修正すると、同じ検証フレームでの平均IoUが約0.40から約0.74に上がりました。"
+ ],
+ "NeuroDrive-K": [
+  "NeuroDrive-K",
+  "NeuroDrive-K"
+ ],
+ "A modular path planner for autonomous driving that predicts behaviour, scores risk, applies safety rules and plans with A*.": [
+  "Bộ lập đường đi dạng mô-đun cho xe tự lái: dự đoán hành vi, chấm điểm rủi ro, áp luật an toàn và tìm đường bằng A*.",
+  "行動を予測し、リスクを評価し、安全ルールを適用したうえでA*で経路を計画する、自動運転向けのモジュール型経路プランナー。"
+ ],
+ "Course project, Introduction to AI, HCMUT": [
+  "Đồ án môn Introduction to AI, ĐH Bách khoa",
+  "授業課題（Introduction to AI、HCMUT）"
+ ],
+ "Scenario 14 from the simulator: the planner overtakes an obstacle (risk score 0.63).": [
+  "Kịch bản 14 trong trình mô phỏng: bộ lập kế hoạch vượt qua một vật cản (điểm rủi ro 0,63).",
+  "シミュレータのシナリオ14：プランナーが障害物を追い越します（リスクスコア0.63）。"
+ ],
+ "XGBoost reaches 78.1% accuracy on five-class traffic-behaviour prediction (Random Forest 76.0%, Naive Bayes 67.9%).": [
+  "XGBoost đạt độ chính xác 78,1% khi dự đoán năm lớp hành vi giao thông (Random Forest 76,0%, Naive Bayes 67,9%).",
+  "5クラスの交通行動予測で、XGBoostの精度は78.1%（Random Forest 76.0%、Naive Bayes 67.9%）。"
+ ],
+ "XGBoost risk regression reaches R² 0.9946 and MAE 0.0078 (Decision Tree R² 0.9549).": [
+  "Khi hồi quy rủi ro, XGBoost đạt R² 0,9946 và MAE 0,0078 (Decision Tree: R² 0,9549).",
+  "リスク回帰では、XGBoostがR² 0.9946、MAE 0.0078（Decision TreeはR² 0.9549）。"
+ ],
+ "A* search takes 24–33 ms per scenario. It found a valid path in 90% of urban runs and 100% of highway and fog runs.": [
+  "Tìm kiếm A* mất 24–33 ms cho mỗi kịch bản. Thuật toán tìm được đường đi hợp lệ trong 90% lượt chạy đô thị và 100% lượt chạy cao tốc và sương mù.",
+  "A*探索の所要時間はシナリオごとに24〜33 ms。有効な経路が見つかった割合は、市街地で90%、高速道路と霧で100%でした。"
+ ],
+ "Report (PDF, Vietnamese)": [
+  "Báo cáo (PDF, tiếng Việt)",
+  "レポート（PDF、ベトナム語）"
+ ],
+ "Cutting stock heuristics": [
+  "Heuristic cho bài toán cắt vật liệu",
+  "カッティングストック問題のヒューリスティック"
+ ],
+ "First Fit Decreasing and Best Fit Decreasing policies that decide where each piece is cut in a 2D cutting stock environment.": [
+  "Hai chính sách First Fit Decreasing và Best Fit Decreasing quyết định cắt từng mảnh ở đâu trong môi trường cắt vật liệu 2D.",
+  "2次元カッティングストック問題の環境で、各ピースをどこで切り出すかを決めるFirst Fit DecreasingとBest Fit Decreasingのポリシー。"
+ ],
+ "University course assignment": [
+  "Bài tập lớn môn học ở trường đại học",
+  "大学の授業課題"
+ ],
+ "The README's greedy-policy demo: each cell is a stock sheet, coloured blocks are placed pieces.": [
+  "Demo chính sách tham lam trong README: mỗi ô là một tấm vật liệu, các khối màu là những mảnh đã đặt.",
+  "READMEにある貪欲法ポリシーのデモ。各マスが1枚の素材シートで、色付きのブロックが配置済みのピースです。"
+ ],
+ "Simple operating system": [
+  "Hệ điều hành đơn giản",
+  "シンプルなオペレーティングシステム"
+ ],
+ "A C simulation of an operating system: multi-level queue scheduling on several CPUs, paged virtual memory with swap, and system calls.": [
+  "Mô phỏng hệ điều hành bằng C: lập lịch hàng đợi đa mức trên nhiều CPU, bộ nhớ ảo phân trang có swap, và các lời gọi hệ thống.",
+  "C言語によるオペレーティングシステムのシミュレーション：複数CPUでのマルチレベルキュースケジューリング、スワップ付きのページング仮想メモリ、システムコール。"
+ ],
+ "Course assignment, CO2018 (HCMUT)": [
+  "Bài tập lớn môn học, CO2018 (ĐH Bách khoa)",
+  "授業課題、CO2018（HCMUT）"
+ ],
+ "Blockchain-integrated IoT system": [
+  "Hệ thống IoT tích hợp blockchain",
+  "ブロックチェーンを組み込んだIoTシステム"
+ ],
+ "A prototype that signs IoT readings per device, verifies them in a FastAPI backend and anchors their hashes in a Solidity contract.": [
+  "Nguyên mẫu ký số số liệu IoT theo từng thiết bị, xác minh chữ ký ở backend FastAPI và ghi mã băm của số liệu vào một hợp đồng Solidity.",
+  "IoTの測定値にデバイスごとに署名し、FastAPIバックエンドで検証して、そのハッシュをSolidityのコントラクトに記録するプロトタイプ。"
+ ],
+ "Real-time stock monitoring": [
+  "Theo dõi cổ phiếu theo thời gian thực",
+  "リアルタイム株価モニタリング"
+ ],
+ "A Java console service that polls prices from two exchange feeds and notifies price alerts, a live view and a ticker.": [
+  "Dịch vụ Java chạy trên console, định kỳ lấy giá từ nguồn dữ liệu của hai sàn rồi báo tới màn hình cảnh báo giá, màn hình giá trực tiếp và bảng giá chạy.",
+  "2つの取引所フィードから株価を定期的に取得し、価格アラート、ライブ表示、ティッカーに通知するJavaのコンソールサービス。"
+ ],
+ "HCMUT Tutoring": [
+  "HCMUT Tutoring",
+  "HCMUT Tutoring"
+ ],
+ "A Django and MongoDB backend for a university tutoring programme: role-based login for students, tutors and managers.": [
+  "Backend Django và MongoDB cho chương trình Tutor của trường: đăng nhập theo vai trò cho sinh viên, tutor và người quản lý.",
+  "大学のチューター制度向けのDjango・MongoDBバックエンド。学生、チューター、管理者がそれぞれのロールでログインできます。"
+ ],
+ "WeApRous": [
+  "WeApRous",
+  "WeApRous"
+ ],
+ "A small HTTP stack on raw TCP sockets: a virtual-host reverse proxy with round-robin, a REST router and two peer-to-peer chats.": [
+  "Một HTTP stack nhỏ viết trên socket TCP thuần: reverse proxy theo virtual host có chia tải round-robin, một router REST và hai ứng dụng chat peer-to-peer.",
+  "生のTCPソケットで組んだ小さなHTTPスタック。ラウンドロビン対応のバーチャルホスト型リバースプロキシ、RESTルーター、2つのP2Pチャットで構成しています。"
+ ],
+ "Course assignment, CO3093/CO3094 (HCMUT)": [
+  "Bài tập lớn môn học, CO3093/CO3094 (ĐH Bách khoa)",
+  "授業課題（CO3093/CO3094、HCMUT）"
+ ],
+ "Freelance Studio": [
+  "Freelance Studio",
+  "Freelance Studio"
+ ],
+ "Our studio's website: services, pricing, past projects and a client area for websites, apps, AI and games built to order.": [
+  "Website của studio chúng mình, nơi nhận làm theo yêu cầu website, ứng dụng, AI và game: dịch vụ, bảng giá, dự án đã làm và khu vực dành cho khách hàng.",
+  "Webサイト、アプリ、AI、ゲームを受注制作するスタジオのサイト。サービス、料金、過去の実績、クライアントエリアを載せています。"
+ ],
+ "Freelance studio with two HCMUT classmates": [
+  "Studio freelance cùng hai bạn cùng lớp ở ĐH Bách khoa",
+  "HCMUTの同級生2人と運営するフリーランススタジオ"
+ ],
+ "EduCast AI": [
+  "EduCast AI",
+  "EduCast AI"
+ ],
+ "A gradient-boosting ensemble that predicts the probability a student passes, from lab-report submission logs.": [
+  "Mô hình ensemble gradient boosting dự đoán xác suất sinh viên qua môn, dựa trên nhật ký nộp bài thí nghiệm.",
+  "実験レポートの提出ログから学生の合格確率を予測する、勾配ブースティングのアンサンブルモデル。"
+ ],
+ "Neuro-Symbolic RAG": [
+  "Neuro-Symbolic RAG",
+  "Neuro-Symbolic RAG"
+ ],
+ "A retrieval and solver pipeline that answers physics and logic questions with Z3 and SymPy instead of letting a small LLM guess.": [
+  "Pipeline truy xuất kết hợp bộ giải: Z3 và SymPy trả lời câu hỏi vật lý và logic, thay vì để một LLM nhỏ tự đoán.",
+  "検索とソルバーを組み合わせたパイプライン。小さなLLMに答えを推測させず、Z3とSymPyで物理と論理の問題を解きます。"
+ ],
+ "IEEE IJCNN 2026 EXACT challenge": [
+  "Cuộc thi EXACT của IEEE IJCNN 2026",
+  "IEEE IJCNN 2026 EXACTチャレンジ"
+ ],
+ "The routing and retrieval half of the pipeline. The solver half sits to the right.": [
+  "Nửa định tuyến và truy xuất của pipeline. Nửa bộ giải nằm ở bên phải.",
+  "パイプラインのうち、ルーティングと検索を担う部分です。ソルバー側は右にあります。"
+ ],
+ "22 of 25 physics problems solved (88%) in round 1 of the IEEE IJCNN 2026 EXACT challenge.": [
+  "Giải đúng 22/25 bài vật lý (88%) ở vòng 1 cuộc thi EXACT của IEEE IJCNN 2026.",
+  "IEEE IJCNN 2026 EXACTチャレンジの第1ラウンドで、物理問題25問中22問（88%）に正解。"
+ ],
+ "Solution report (PDF)": [
+  "Báo cáo lời giải (PDF)",
+  "解法レポート（PDF）"
+ ],
+ "D-LAPA feature analysis": [
+  "Phân tích đặc trưng D-LAPA",
+  "D-LAPAの特徴量分析"
+ ],
+ "A rerun of the feature analysis for the D-LAPA depth-injection paper: does adding depth features help a probe on LIBERO-10 frames?": [
+  "Chạy lại phần phân tích đặc trưng cho bài báo D-LAPA về việc thêm độ sâu vào mô hình: đặc trưng độ sâu có giúp probe làm tốt hơn trên khung hình LIBERO-10 không?",
+  "深度を注入するD-LAPA論文の特徴量分析を再実行。深度特徴を加えると、LIBERO-10のフレームでプローブの性能は上がるのか？"
+ ],
+ "Analysis for the D-LAPA depth-injection paper": [
+  "Phân tích cho bài báo D-LAPA về việc thêm độ sâu",
+  "深度注入に関するD-LAPA論文のための分析"
+ ],
+ "Held-out Ridge R² on LIBERO-10; the y-axis starts at 0.40.": [
+  "R² của Ridge trên phần dữ liệu giữ lại (held-out) của LIBERO-10. Trục y bắt đầu từ 0,40.",
+  "LIBERO-10のホールドアウトデータでのRidge R²。縦軸は0.40から始まります。"
+ ],
+ "Ridge probe R² 0.454 for RGB alone, 0.520 for RGB plus the Model 2 or Model 6.1 depth features (+0.066).": [
+  "R² của Ridge probe: 0,454 khi chỉ dùng RGB, 0,520 khi thêm đặc trưng độ sâu của Model 2 hoặc Model 6.1 (+0,066).",
+  "RidgeプローブのR²：RGBのみで0.454、Model 2またはModel 6.1の深度特徴を加えると0.520（+0.066）。"
+ ],
+ "Analysis report (PDF)": [
+  "Báo cáo phân tích (PDF)",
+  "分析レポート（PDF）"
+ ],
+ "Cloud Arena": [
+  "Cloud Arena",
+  "Cloud Arena"
+ ],
+ "A game-server rental website with a shop, news section and admin dashboard, on a hand-written PHP MVC core.": [
+  "Website cho thuê máy chủ game, có cửa hàng, mục tin tức và trang quản trị, chạy trên lõi MVC viết tay bằng PHP.",
+  "ショップ、ニュース、管理ダッシュボードを備えたゲームサーバーレンタルサイト。PHPで自作したMVCコアの上で動きます。"
+ ],
+ "Web programming course project": [
+  "Đồ án môn lập trình web",
+  "Webプログラミングの授業課題"
+ ],
+ "Server plans, with search, category and price filters.": [
+  "Các gói máy chủ, có ô tìm kiếm và bộ lọc theo danh mục, theo giá.",
+  "サーバープラン一覧。検索のほか、カテゴリと価格で絞り込めます。"
+ ],
+ "The news section I built: categories, search and a featured story.": [
+  "Mục tin tức do mình làm: chuyên mục, tìm kiếm và một bài nổi bật.",
+  "担当したニュースセクション。カテゴリ、検索、注目記事があります。"
+ ],
+ "An article page with view count, likes, sharing and trending posts.": [
+  "Trang bài viết có lượt xem, lượt thích, nút chia sẻ và các bài đang thịnh hành.",
+  "閲覧数、いいね、シェア、トレンド記事を表示する記事ページ。"
+ ],
+ "Oracle (V-link): link safety checker": [
+  "Oracle (V-link): kiểm tra độ an toàn của liên kết",
+  "Oracle（V-link）：リンクの安全性チェッカー"
+ ],
+ "A Chrome extension popup that asks Google Safe Browsing whether a URL is malware or phishing, with a local blocklist as a second check.": [
+  "Popup của một tiện ích Chrome: hỏi Google Safe Browsing xem URL có chứa mã độc hay là trang lừa đảo không, rồi kiểm thêm một lần bằng danh sách chặn cục bộ.",
+  "URLがマルウェアやフィッシングに当たらないかをGoogle Safe Browsingに問い合わせ、ローカルのブロックリストでも確認するChrome拡張機能のポップアップ。"
+ ],
+ "Video Retrieval AI Agent": [
+  "Video Retrieval AI Agent",
+  "Video Retrieval AI Agent"
+ ],
+ "A Vietnamese-first video search system: text queries find matching frames through CLIP embeddings and a FAISS index, behind a FastAPI and React app.": [
+  "Hệ thống tìm video ưu tiên tiếng Việt: gõ câu mô tả là tìm ra khung hình khớp nhờ embedding CLIP và chỉ mục FAISS, chạy sau một ứng dụng FastAPI và React.",
+  "ベトナム語を主な対象にした動画検索システム。テキストのクエリから、CLIP埋め込みとFAISSインデックスで一致するフレームを探します。アプリはFastAPIとReactで構成しています。"
+ ],
+ "AI Challenge 2025": [
+  "AI Challenge 2025",
+  "AI Challenge 2025"
+ ],
+ "E-Commerce Chatbot AI": [
+  "E-Commerce Chatbot AI",
+  "E-Commerce Chatbot AI"
+ ],
+ "A FastAPI chatbot backend that answers users with an OpenAI assistant, stores chat history and token usage in MongoDB, and replies on Facebook Messenger.": [
+  "Backend chatbot viết bằng FastAPI: dùng một trợ lý OpenAI để trả lời người dùng, lưu lịch sử chat và lượng token đã dùng vào MongoDB, và nhắn lại trên Facebook Messenger.",
+  "OpenAIのアシスタントでユーザーに返信し、チャット履歴とトークン使用量をMongoDBに保存して、Facebook Messengerでも応答するFastAPI製のチャットボットバックエンド。"
+ ],
+ "Reading a fisheye image": [
+  "Đọc một ảnh mắt cá",
+  "魚眼画像を読み解く"
+ ],
+ "Why a pinhole model breaks past 90°, what the equidistant model does instead, and what that means for stereo depth.": [
+  "Vì sao mô hình pinhole hỏng khi góc vượt quá 90°, mô hình equidistant xử lý khác ra sao, và điều đó có ý nghĩa gì với độ sâu stereo.",
+  "ピンホールモデルが90°を超えると破綻する理由と、等距離射影モデルの考え方、そしてそれがステレオによる奥行き推定にどう関わるかを説明します。"
+ ],
+ "Pinhole, r = f tan θ": [
+  "Pinhole, r = f tan θ",
+  "ピンホール、r = f tan θ"
+ ],
+ "Equidistant, r = f θ": [
+  "Equidistant, r = f θ",
+  "等距離射影、r = f θ"
+ ],
+ "Field of view": [
+  "Góc nhìn",
+  "画角"
+ ],
+ "A square grid on a wall in front of the camera, imaged by both models so that the edge of the view lands on the same circle. Drag the field of view: the pinhole image pushes the grid out to the rim and has no image at all from 180°; the equidistant image keeps going.": [
+  "Một lưới ô vuông trên bức tường trước camera, chiếu qua cả hai mô hình sao cho mép góc nhìn rơi vào cùng một đường tròn. Kéo thanh trượt góc nhìn: ảnh pinhole đẩy lưới ra sát vành và từ 180° trở đi thì không còn ảnh nào; ảnh equidistant vẫn hiện tiếp.",
+  "カメラの前の壁にある正方形の格子を、画角の端が同じ円に来るようにそろえて、両方のモデルで写しています。画角をドラッグして変えてみてください。ピンホールの画像では格子が縁へ押し出され、180°以上では像がまったくできません。等距離射影の画像はその先も写り続けます。"
+ ],
+ "ADAS-L4 VinBEVFusion: bird's-eye-view segmentation with VinFast": [
+  "ADAS-L4 VinBEVFusion: phân đoạn góc nhìn từ trên xuống cùng VinFast",
+  "ADAS-L4 VinBEVFusion：VinFastとの鳥瞰図セグメンテーション"
+ ],
+ "NeuroDrive-K: path planning for autonomous driving": [
+  "NeuroDrive-K: lập đường đi cho xe tự lái",
+  "NeuroDrive-K：自動運転の経路計画"
+ ],
+ "Oracle: dangerous-link checker": [
+  "Oracle: công cụ kiểm tra liên kết nguy hiểm",
+  "Oracle：危険なリンクのチェッカー"
+ ],
+ "ADAS-L4 VinBEVFusion": [
+  "ADAS-L4 VinBEVFusion",
+  "ADAS-L4 VinBEVFusion"
+ ],
+ "Oracle": [
+  "Oracle",
+  "Oracle"
+ ],
+ "LLMs": [
+  "LLM",
+  "LLM"
+ ],
+ "Web": [
+  "Web",
+  "Web"
+ ],
+ "CV": [
+  "CV",
+  "CV"
+ ],
+ "six cameras": [
+  "sáu camera",
+  "6台のカメラ"
+ ],
+ "nuScenes format": [
+  "định dạng nuScenes",
+  "nuScenes形式"
+ ],
+ "Bayesian inference": [
+  "suy luận Bayes",
+  "ベイズ推論"
+ ],
+ "TCP sockets": [
+  "socket TCP",
+  "TCPソケット"
+ ],
+ "Previous": [
+  "Trước",
+  "前へ"
+ ],
+ "Next": [
+  "Sau",
+  "次へ"
+ ],
+ "fisheye": [
+  "mắt cá",
+  "魚眼"
+ ],
+ "stereo": [
+  "stereo",
+  "ステレオ"
+ ],
+ "geometry": [
+  "hình học",
+  "幾何"
+ ],
+ "PHP": [
+  "PHP",
+  "PHP"
+ ],
+ "MySQL": [
+  "MySQL",
+  "MySQL"
+ ],
+ "Tailwind CSS": [
+  "Tailwind CSS",
+  "Tailwind CSS"
+ ],
+ "JavaScript": [
+  "JavaScript",
+  "JavaScript"
+ ],
+ "Python": [
+  "Python",
+  "Python"
+ ],
+ "Qwen3-8B": [
+  "Qwen3-8B",
+  "Qwen3-8B"
+ ],
+ "ChromaDB": [
+  "ChromaDB",
+  "ChromaDB"
+ ],
+ "NetworkX": [
+  "NetworkX",
+  "NetworkX"
+ ],
+ "Z3": [
+  "Z3",
+  "Z3"
+ ],
+ "SymPy": [
+  "SymPy",
+  "SymPy"
+ ],
+ "spaCy": [
+  "spaCy",
+  "spaCy"
+ ],
+ "Docker": [
+  "Docker",
+  "Docker"
+ ],
+ "BEVFusion": [
+  "BEVFusion",
+  "BEVFusion"
+ ],
+ "LiDAR": [
+  "LiDAR",
+  "LiDAR"
+ ],
+ "C": [
+  "C",
+  "C"
+ ],
+ "pthreads": [
+  "pthreads",
+  "pthreads"
+ ],
+ "Make": [
+  "Make",
+  "Make"
+ ],
+ "XGBoost": [
+  "XGBoost",
+  "XGBoost"
+ ],
+ "scikit-learn": [
+  "scikit-learn",
+  "scikit-learn"
+ ],
+ "SHAP": [
+  "SHAP",
+  "SHAP"
+ ],
+ "A*": [
+  "A*",
+  "A*"
+ ],
+ "FastAPI": [
+  "FastAPI",
+  "FastAPI"
+ ],
+ "CLIP": [
+  "CLIP",
+  "CLIP"
+ ],
+ "FAISS": [
+  "FAISS",
+  "FAISS"
+ ],
+ "React": [
+  "React",
+  "React"
+ ],
+ "TypeScript": [
+  "TypeScript",
+  "TypeScript"
+ ],
+ "Vite": [
+  "Vite",
+  "Vite"
+ ],
+ "Tailwind": [
+  "Tailwind",
+  "Tailwind"
+ ],
+ "PyTorch": [
+  "PyTorch",
+  "PyTorch"
+ ],
+ "UMAP": [
+  "UMAP",
+  "UMAP"
+ ],
+ "SciPy": [
+  "SciPy",
+  "SciPy"
+ ],
+ "NumPy": [
+  "NumPy",
+  "NumPy"
+ ],
+ "Gymnasium": [
+  "Gymnasium",
+  "Gymnasium"
+ ],
+ "gym-cutting-stock": [
+  "gym-cutting-stock",
+  "gym-cutting-stock"
+ ],
+ "Next.js": [
+  "Next.js",
+  "Next.js"
+ ],
+ "nginx": [
+  "nginx",
+  "nginx"
+ ],
+ "OpenAI Assistants API": [
+  "OpenAI Assistants API",
+  "OpenAI Assistants API"
+ ],
+ "MongoDB": [
+  "MongoDB",
+  "MongoDB"
+ ],
+ "pytest": [
+  "pytest",
+  "pytest"
+ ],
+ "Django": [
+  "Django",
+  "Django"
+ ],
+ "Django REST Framework": [
+  "Django REST Framework",
+  "Django REST Framework"
+ ],
+ "HTML": [
+  "HTML",
+  "HTML"
+ ],
+ "CSS": [
+  "CSS",
+  "CSS"
+ ],
+ "threading": [
+  "threading",
+  "threading"
+ ],
+ "Flask": [
+  "Flask",
+  "Flask"
+ ],
+ "Java": [
+  "Java",
+  "Java"
+ ],
+ "Maven": [
+  "Maven",
+  "Maven"
+ ],
+ "org.json": [
+  "org.json",
+  "org.json"
+ ],
+ "Google Safe Browsing API": [
+  "Google Safe Browsing API",
+  "Google Safe Browsing API"
+ ],
+ "Solidity": [
+  "Solidity",
+  "Solidity"
+ ],
+ "web3.py": [
+  "web3.py",
+  "web3.py"
+ ],
+ "IPFS": [
+  "IPFS",
+  "IPFS"
+ ],
+ "ECDSA": [
+  "ECDSA",
+  "ECDSA"
+ ],
+ "LightGBM": [
+  "LightGBM",
+  "LightGBM"
+ ],
+ "CatBoost": [
+  "CatBoost",
+  "CatBoost"
+ ],
+ "pandas": [
+  "pandas",
+  "pandas"
+ ]
+}

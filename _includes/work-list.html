@@ -10,7 +10,7 @@
   {% assign n_paper = site.publications | size %}
   {% assign n_project = site.portfolio | size %}
   {% assign n_writing = site.posts | size %}
-  {% if include.news %}{% assign n_news = site.data.news | size %}{% else %}{% assign n_news = 0 %}{% endif %}
+  {% if include.news %}{% assign n_news = site.news | size %}{% else %}{% assign n_news = 0 %}{% endif %}
   {% assign n_all = n_paper | plus: n_project | plus: n_writing | plus: n_news %}
   <section class="work reveal" id="work" aria-labelledby="work-h">
     <div class="work__inner">
@@ -40,8 +40,8 @@
               {% assign sm = p.summary | default: p.excerpt | strip_html %}
               {% assign w = key | append: "-01" | date: "%b" %}{% include work-row.html kind="project" when=w title=p.title url=p.url summary=sm venue=p.venue thumb=p.thumb %}
             {% endif %}{% endfor %}
-            {% if include.news %}{% for p in site.data.news %}{% assign k = p.date | date: "%Y-%m" %}{% if k == key %}
-              {% if p.month_only %}{% assign w = p.date | date: "%b" %}{% else %}{% assign w = p.date | date: "%b %-d" %}{% endif %}{% include work-row.html kind="news" when=w title=p.text %}
+            {% if include.news %}{% for p in site.news %}{% assign k = p.date | date: "%Y-%m" %}{% if k == key %}
+              {% if p.month_only %}{% assign w = p.date | date: "%b" %}{% else %}{% assign w = p.date | date: "%b %-d" %}{% endif %}{% include work-row.html kind="news" when=w title=p.title url=p.url %}
             {% endif %}{% endfor %}{% endif %}
           {% endfor %}
           {% for p in site.portfolio %}{% assign k = p.when | append: "" %}{% if k == ys %}

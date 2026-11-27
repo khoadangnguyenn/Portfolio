@@ -27,7 +27,7 @@ layout: default
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
-          {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+          {% if page.title %}{% capture _ttl %}{% include t.html s=page.title %}{% endcapture %}<h1 class="page__title" itemprop="headline">{{ _ttl | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
@@ -51,8 +51,8 @@ layout: default
         {% comment %} 2026-11-26 (user): abstract replaces "Recommended citation". Set `abstract:` in the paper's front matter. {% endcomment %}
         {% if page.collection == "portfolio" %}{% include base_path %}{% include project-head.html %}{% endif %}
         {% if page.abstract %}<h2 class="pub-abstract__h">Abstract</h2><p class="pub-abstract">{{ page.abstract }}</p>{% endif %}
-        {{ content }}
-        {% if page.gallery %}<div class="pj-gallery">{% for g in page.gallery %}<figure><a href="{{ base_path }}{{ g.src }}"><img src="{{ base_path }}{{ g.src }}" alt="{{ g.caption | escape }}" loading="lazy" decoding="async"></a><figcaption>{{ g.caption }}</figcaption></figure>{% endfor %}</div>{% endif %}
+        {% include tc.html html=content %}
+        {% if page.gallery %}<div class="pj-gallery">{% for g in page.gallery %}<figure><a href="{{ base_path }}{{ g.src }}"><img src="{{ base_path }}{{ g.src }}" alt="{{ g.caption | escape }}" loading="lazy" decoding="async"></a><figcaption>{% include t.html s=g.caption %}</figcaption></figure>{% endfor %}</div>{% endif %}
 
         {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
           <p style="font-size: smaller"><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>

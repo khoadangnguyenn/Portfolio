@@ -1,0 +1,10 @@
+{%- comment -%}
+  One short string in three languages (2026-11-27). Param: s = the English text, used as the key in _data/i18n.yml; if it is not there, _data/i18n_projects.json is tried (project and blog pages, 2026-11-27).
+  English is the default and the fallback. A missing entry prints the English text as it is; in development it is wrapped in
+  .t-miss so that `grep -c t-miss _site/...` lists what still needs a translation.
+  Switching is done in CSS from <html data-lang> (assets/css/story.css, block "Language switch").
+{%- endcomment -%}
+{%- assign _tr = site.data.i18n[include.s] | default: site.data.i18n_projects[include.s] -%}
+{%- if _tr -%}<span class="t has-vi has-ja" lang="en">{{ include.s }}</span><span class="t" lang="vi">{{ _tr[0] }}</span><span class="t" lang="ja">{{ _tr[1] }}</span>
+{%- elsif include.s and jekyll.environment == "development" -%}<span class="t-miss">{{ include.s }}</span>
+{%- else -%}{{ include.s }}{%- endif -%}

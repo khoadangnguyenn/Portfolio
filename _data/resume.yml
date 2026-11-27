@@ -1,5 +1,5 @@
-# Data for the resume-style homepage (layout home-resume). Copied from _pages/cv.md on 2026-11-25:
-# when you change one, change the other.
+# Data for the resume-style homepage (layout home-resume) and the CV page /cv/ (layout cv, since 2026-11-27).
+# One source for both; the old _pages/cv.md text is in _trash_2026-11-27/cv.md.
 # 2026-11-26: checked against LinkedIn (saved page of 2026-10-24: headline, About) and the CV PDF of 2026-11-08
 # (EyeCode dates and points, Top 10%, honors, tools). Hypmotion work is left out on purpose (company project).
 glance:
@@ -9,7 +9,7 @@ glance:
     when: "Oct 2026 – present"
   - label: "Research"
     title: "Student researcher"
-    org: "URA group, HCMUT"
+    org: "URA group, VNPT Lab"
     when: "Feb 2024 – present"
   - label: "Education"
     title: "B.Sc. Computer Science"
@@ -19,9 +19,10 @@ experience:
   - when: "Oct 2026 – present"
     title: "AI Engineer, R&D Department"
     org: "Hypmotion Co., Ltd."
+    aside: "Ho Chi Minh City, Vietnam"   # right-hand italic, as in the CV PDF (2026-11-27)
   - when: "Feb 2024 – present"
     title: "Student researcher"
-    org: "URA Research Group, HCMUT"
+    org: "URA group, VNPT Lab"
     note: "Advised by Assoc. Prof. Quan Thanh Tho."
     points:
       - "Robot navigation with reinforcement learning, and lightweight trajectory prediction (MARS)."
@@ -29,6 +30,7 @@ experience:
   - when: "Feb – Jul 2026"
     title: "Research intern"
     org: "EyeCode Tech"
+    aside: "Ho Chi Minh City, Vietnam"
     points:
       - "Applied vision-language (VLM) and vision-language-action (VLA) models to indoor robot navigation."
       - "Built a ViNT + CLIP baseline from the ViNT and CLIP code, to support UrbanNav's baselines."
@@ -38,6 +40,7 @@ education:
     title: "B.Sc. in Computer Science (Japanese-oriented program)"
     org: "Ho Chi Minh City University of Technology (HCMUT), VNU-HCM"
     note: "Expected 2027. GPA 3.4 / 4.0, top 10%."
+    aside: "GPA 3.4 / 4.0"   # right-hand line on the CV page, as in the CV PDF
 skills:
   - key: programming
     label: "Programming"

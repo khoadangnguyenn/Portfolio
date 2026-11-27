@@ -1,5 +1,15 @@
 {% include base_path %}
 
+<!-- Language (2026-11-27): English by default, not the browser language. ?lang=vi|en|ja in the link wins and is remembered. Set here, before first paint, so the page does not flash. -->
+<script>
+(function () {
+  var l = 'en', ok = /^(vi|en|ja)$/;
+  try { var q = location.search.match(/[?&]lang=(vi|en|ja)\b/); l = q ? q[1] : (localStorage.getItem('lang') || 'en'); if (q) localStorage.setItem('lang', l); } catch (e) {}
+  if (!ok.test(l)) l = 'en';
+  var d = document.documentElement; d.setAttribute('data-lang', l); d.setAttribute('lang', l);
+})();
+</script>
+
 <!-- start custom head snippets -->
 
 <!-- Support for Academicons -->
@@ -28,5 +38,7 @@
 <link rel="stylesheet" href="{{ base_path }}/assets/css/motion.css"/>
 <script>window.PALETTES = {{ site.data.palettes | jsonify }};</script>
 <script src="{{ base_path }}/assets/js/palette-picker.js"></script>
+{% assign _tt = site.data.i18n[page.title] | default: site.data.i18n_projects[page.title] %}{% assign _st = site.data.i18n[site.title] %}<script>window.PAGE_TITLES = {{ _tt | jsonify }}; window.SITE_TITLES = {{ _st | jsonify }};</script>
+<script defer src="{{ base_path }}/assets/js/lang.js"></script>
 
 <!-- end custom head snippets -->

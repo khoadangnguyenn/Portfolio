@@ -6,7 +6,7 @@ layout: default
 <main id="home" class="resume rs-projects" role="main">
   <header class="rs-head rs-head--page">
     <div class="rs-wrap">
-      <h1 class="rs-name">{{ page.title }}</h1>
+      <h1 class="rs-name">{% include t.html s=page.title %}</h1>
       {% if page.lede %}<p class="rs-tag">{{ page.lede }}</p>{% endif %}
     </div>
   </header>
